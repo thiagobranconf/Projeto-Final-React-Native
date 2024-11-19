@@ -79,8 +79,7 @@ const LoginScreen = () => {
             onPress={() => navigation.navigate("Login")}
           >
             <Text style={styles.registerText}>
-              Não tem uma conta?{" "}
-              <Text style={styles.highlight}>CADASTRE-SE</Text>
+              Já tem uma conta? <Text style={styles.highlight}>ENTRAR</Text>
             </Text>
           </Pressable>
         </View>
