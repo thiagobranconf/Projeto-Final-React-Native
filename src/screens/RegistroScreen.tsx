@@ -9,9 +9,6 @@ import {
   Pressable,
 } from "react-native";
 import { useState } from "react";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import AntDesign from "@expo/vector-icons/AntDesign";
-
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 
 type RootStackParamList = {
@@ -19,192 +16,151 @@ type RootStackParamList = {
   Registro: undefined;
 };
 
-const RegistroScreen = () => {
+const LoginScreen = () => {
+  const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [nome, setNome] = useState("");
+  const [confirmaSenha, setConfirmaSenha] = useState("");
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
   return (
-    <SafeAreaView
-      style={{ flex: 1, backgroundColor: "#EECCD7", alignItems: "center" }}
-    >
+    <SafeAreaView style={styles.safeArea}>
       <View>
-        <Image
-          style={{ width: 200, height: 250 }}
-          source={{
-            uri: "https://static.vecteezy.com/ti/vetor-gratis/p1/7410289-design-de-logotipo-de-loja-online-vetor.jpg",
-          }}
-        ></Image>
+        <Image style={styles.logo} source={require("../../assets/logo.png")} />
       </View>
-
       <KeyboardAvoidingView>
-        <View style={{ alignItems: "center" }}>
-          <Text
-            style={{
-              fontSize: 17,
-              fontWeight: "bold",
-              marginTop: 12,
-
-              color: "#041E42",
-            }}
-          >
-            Registre sua conta
-          </Text>
-        </View>
-        <View style={{ marginTop: 40 }}>
-          <View style={{ marginTop: 10 }}>
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                gap: 5,
-                backgroundColor: "#D0D0D0",
-                paddingVertical: 5,
-                borderRadius: 5,
-                marginTop: 30,
-              }}
-            >
-              <AntDesign
-                name="user"
-                size={24}
-                color="gray"
-                style={{ marginLeft: 8 }}
-              />
-
-              <TextInput
-                value={senha}
-                onChangeText={(text) => setNome(text)}
-                secureTextEntry={true}
-                style={{
-                  color: "gray",
-                  marginVertical: 10,
-                  width: 300,
-                  fontSize: nome ? 16 : 16,
-                }}
-                placeholder="Digite seu nome"
-              />
-            </View>
-          </View>
-        </View>
-
-        <View style={{ marginTop: 10 }}>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              gap: 5,
-              backgroundColor: "#D0D0D0",
-              paddingVertical: 5,
-              borderRadius: 5,
-              marginTop: 30,
-            }}
-          >
-            <MaterialIcons
-              style={{ marginLeft: 8 }}
-              name="email"
-              size={24}
-              color="gray"
+        <View>
+          <View style={styles.inputContainer}>
+            <TextInput
+              value={nome}
+              onChangeText={(text) => setNome(text)}
+              style={styles.input}
+              placeholder="USERNAME"
+              placeholderTextColor="gray"
             />
-
+          </View>
+          <View style={styles.inputContainer}>
             <TextInput
               value={email}
               onChangeText={(text) => setEmail(text)}
-              style={{
-                color: "gray",
-                marginVertical: 10,
-                width: 300,
-                fontSize: email ? 16 : 16,
-              }}
-              placeholder="Digite seu email"
+              style={styles.input}
+              placeholder="EMAIL"
+              placeholderTextColor="gray"
             />
           </View>
-        </View>
-
-        <View style={{ marginTop: 10 }}>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              gap: 5,
-              backgroundColor: "#D0D0D0",
-              paddingVertical: 5,
-              borderRadius: 5,
-              marginTop: 30,
-            }}
-          >
-            <AntDesign
-              name="lock1"
-              size={24}
-              color="gray"
-              style={{ marginLeft: 8 }}
-            />
-
+          <View style={styles.inputContainer}>
             <TextInput
               value={senha}
               onChangeText={(text) => setSenha(text)}
               secureTextEntry={true}
-              style={{
-                color: "gray",
-                marginVertical: 10,
-                width: 300,
-                fontSize: senha ? 16 : 16,
-              }}
-              placeholder="Digite sua senha"
+              style={styles.input}
+              placeholder="SENHA"
+              placeholderTextColor="gray"
             />
           </View>
-        </View>
-
-        <View
-          style={{
-            marginTop: 12,
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <Text>Mantenha-me logado</Text>
-          <Text style={{ color: "#007FFF", fontWeight: "500" }}>
-            Esqueceu a senha?
-          </Text>
-        </View>
-
-        <View style={{ marginTop: 70 }} />
-
-        <Pressable
-          style={{
-            width: 200,
-            backgroundColor: "#FEBE10",
-            borderRadius: 6,
-            marginLeft: "auto",
-            marginRight: "auto",
-            padding: 15,
-          }}
-        >
-          <Text
-            style={{
-              textAlign: "center",
-              color: "white",
-              fontSize: 16,
-              fontWeight: "bold",
-            }}
+          <View style={styles.inputContainer}>
+            <TextInput
+              value={confirmaSenha}
+              onChangeText={(text) => setConfirmaSenha(text)}
+              secureTextEntry={true}
+              style={styles.input}
+              placeholder="CONFIRMAR SENHA"
+              placeholderTextColor="gray"
+            />
+          </View>
+          <View style={styles.forgotPasswordContainer}>
+            <Text style={styles.forgotPasswordText}>Esqueceu a senha?</Text>
+          </View>
+          <Pressable style={styles.loginButton}>
+            <Text style={styles.loginButtonText}>LOGIN</Text>
+          </Pressable>
+          <Pressable
+            style={styles.registerButton}
+            onPress={() => navigation.navigate("Login")}
           >
-            Login
-          </Text>
-        </Pressable>
-
-        <Pressable
-          style={{ marginTop: 15 }}
-          onPress={() => navigation.navigate("Login")}
-        >
-          <Text style={{ textAlign: "center", color: "gray", fontSize: 16 }}>
-            Já possue uma conta? Entre
-          </Text>
-        </Pressable>
+            <Text style={styles.registerText}>
+              Não tem uma conta?{" "}
+              <Text style={styles.highlight}>CADASTRE-SE</Text>
+            </Text>
+          </Pressable>
+        </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };
 
-export default RegistroScreen;
+export default LoginScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: "rgba(238, 204, 215, 1)",
+    alignItems: "center",
+  },
+  logo: {
+    width: 360,
+    height: 320,
+  },
+  inputContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
+    backgroundColor: "white",
+    paddingVertical: 5,
+    borderRadius: 35,
+    marginTop: 15,
+    height: 62,
+    paddingLeft: 30,
+  },
+  input: {
+    color: "black",
+    marginVertical: 10,
+    width: 300,
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  forgotPasswordContainer: {
+    marginTop: 18,
+  },
+  forgotPasswordText: {
+    color: "#FD0054",
+    fontWeight: "500",
+    textAlign: "right",
+    marginRight: 10,
+    fontSize: 18,
+  },
+  loginButton: {
+    width: 380,
+    backgroundColor: "#FD0054",
+    borderRadius: 35,
+    padding: 15,
+    height: 62,
+    marginTop: 15,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  loginButtonText: {
+    textAlign: "center",
+    padding: 5,
+    color: "white",
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  registerButton: {
+    marginTop: 18,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  registerText: {
+    textAlign: "center",
+    color: "#000000",
+    fontSize: 18,
+  },
+  highlight: {
+    color: "#FD0054",
+    fontWeight: "bold",
+    marginLeft: 5,
+  },
+});
