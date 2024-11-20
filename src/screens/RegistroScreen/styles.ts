@@ -14,16 +14,17 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 5,
-    backgroundColor: "white",
-    borderRadius: 35,
     marginTop: 15,
-    paddingLeft: 30,
+    paddingHorizontal: 10,
   },
   input: {
-    marginVertical: 10,
-    width: 300,
+    paddingLeft: 30,
+    paddingVertical: 20,
+    borderRadius: 35,
+    backgroundColor: "white",
     fontSize: 16,
     fontWeight: "bold",
+    width: "100%",
   },
 
   loginButton: {
