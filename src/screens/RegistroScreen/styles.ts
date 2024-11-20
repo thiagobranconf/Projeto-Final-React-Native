@@ -15,32 +15,20 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     gap: 5,
     backgroundColor: "white",
-    paddingVertical: 5,
     borderRadius: 35,
     marginTop: 15,
-    height: 62,
     paddingLeft: 30,
   },
   input: {
-    color: "black",
     marginVertical: 10,
     width: 300,
     fontSize: 16,
     fontWeight: "bold",
   },
-  forgotPasswordContainer: {
-    marginTop: 18,
-  },
-  forgotPasswordText: {
-    color: "#FD0054",
-    fontWeight: "500",
-    textAlign: "right",
-    marginRight: 10,
-    fontSize: 18,
-  },
+
   loginButton: {
     width: 380,
-    backgroundColor: "#FD0054",
+    backgroundColor: "#FF3276",
     borderRadius: 35,
     padding: 15,
     height: 62,
@@ -68,8 +56,17 @@ export const styles = StyleSheet.create({
     fontSize: 18,
   },
   highlight: {
-    color: "#FD0054",
+    color: "#FF3276",
     fontWeight: "bold",
     marginLeft: 5,
+  },
+  imgbgContainer: {
+    position: "relative",
+    height: "100%",
+  },
+  imgbg: {
+    position: "absolute",
+    top: "25%",
+    width: "150%",
   },
 });
