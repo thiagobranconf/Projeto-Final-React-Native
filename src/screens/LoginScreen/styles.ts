@@ -24,6 +24,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "white",
     fontSize: 16,
     fontWeight: "bold",
+    width: "100%",
   },
   forgotPasswordContainer: {
     marginTop: 18,
