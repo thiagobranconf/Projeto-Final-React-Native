@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
   logo: {
     width: 360,
     height: 320,
+    marginLeft: "7%",
   },
   inputContainer: {
     flexDirection: "row",
@@ -37,6 +38,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+    marginLeft: "4%",
   },
   loginButtonText: {
     textAlign: "center",
@@ -69,5 +71,10 @@ export const styles = StyleSheet.create({
     position: "absolute",
     top: "25%",
     width: "150%",
+  },
+  errorText: {
+    color: "red",
+    textAlign: "center",
+    marginTop: 10,
   },
 });

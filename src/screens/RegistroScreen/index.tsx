@@ -7,18 +7,48 @@ import {
   TextInput,
   Pressable,
   ImageBackground,
+  ActivityIndicator,
 } from "react-native";
 import { useState } from "react";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { RootStackParamList } from "../../types/screensType";
 import { styles } from "./styles";
+import api from "../../services/api";
 
 export const RegistroScreen = () => {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [confirmaSenha, setConfirmaSenha] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
+  const handleRegister = async () => {
+    if (senha !== confirmaSenha) {
+      setError("As senhas não coincidem");
+      return;
+    }
+
+    setLoading(true);
+    setError("");
+    try {
+      const response = await api.post("/users", {
+        nome,
+        email,
+        senha,
+      });
+      if (response.status === 201) {
+        navigation.navigate("Login");
+      } else {
+        setError("Erro ao cadastrar usuário");
+      }
+    } catch (err) {
+      setError("Erro ao cadastrar usuário");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -74,9 +104,14 @@ export const RegistroScreen = () => {
                 placeholderTextColor="gray"
               />
             </View>
-            <Pressable style={styles.loginButton}>
-              <Text style={styles.loginButtonText}>LOGIN</Text>
-            </Pressable>
+            {loading ? (
+              <ActivityIndicator size="large" color="#FD0054" />
+            ) : (
+              <Pressable style={styles.loginButton} onPress={handleRegister}>
+                <Text style={styles.loginButtonText}>CADASTRAR</Text>
+              </Pressable>
+            )}
+            {error ? <Text style={styles.errorText}>{error}</Text> : null}
             <Pressable
               style={styles.registerButton}
               onPress={() => navigation.navigate("Login")}
