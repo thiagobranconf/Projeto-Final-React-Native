@@ -7,16 +7,46 @@ import {
   TextInput,
   Pressable,
   ImageBackground,
+  ActivityIndicator,
 } from "react-native";
 import { useState } from "react";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { RootStackParamList } from "../../types/screensType";
 import { styles } from "./styles";
+import api from "../../services/api";
 
 export const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
+  const handleLogin = async () => {
+    setLoading(true);
+    setError("");
+    try {
+      const response = await api.get("/users", {
+        params: {
+          email,
+          senha,
+        },
+      });
+      const user = response.data.find(
+        (user: { email: string; senha: string }) =>
+          user.email === email && user.senha === senha
+      );
+      if (user) {
+        navigation.navigate("Home");
+      } else {
+        setError("Usuário ou senha inválidos");
+      }
+    } catch (err) {
+      setError("Erro ao fazer login");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -56,9 +86,14 @@ export const LoginScreen = () => {
             <View style={styles.forgotPasswordContainer}>
               <Text style={styles.forgotPasswordText}>Esqueceu a senha?</Text>
             </View>
-            <Pressable style={styles.loginButton}>
-              <Text style={styles.loginButtonText}>LOGIN</Text>
-            </Pressable>
+            {loading ? (
+              <ActivityIndicator size="large" color="#FD0054" />
+            ) : (
+              <Pressable style={styles.loginButton} onPress={handleLogin}>
+                <Text style={styles.loginButtonText}>LOGIN</Text>
+              </Pressable>
+            )}
+            {error ? <Text style={styles.errorText}>{error}</Text> : null}
             <Pressable
               style={styles.registerButton}
               onPress={() => navigation.navigate("Registro")}

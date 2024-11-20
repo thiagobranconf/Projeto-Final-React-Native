@@ -54,12 +54,12 @@ const StackNavigator = () => {
         <Stack.Screen
           name="Login"
           component={LoginScreen}
-          options={{ headerShown: true }}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Registro"
           component={RegistroScreen}
-          options={{ headerShown: true }}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>

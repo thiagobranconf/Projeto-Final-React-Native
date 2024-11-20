@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
   logo: {
     width: 400,
     height: 400,
+    marginLeft: "3%",
   },
   inputContainer: {
     flexDirection: "row",
@@ -77,5 +78,10 @@ export const styles = StyleSheet.create({
     position: "absolute",
     top: "25%",
     width: "150%",
+  },
+  errorText: {
+    color: "red",
+    textAlign: "center",
+    marginTop: 10,
   },
 });
