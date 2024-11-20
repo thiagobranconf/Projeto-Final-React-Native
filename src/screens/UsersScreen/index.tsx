@@ -1,59 +1,58 @@
 import { useEffect, useState } from "react";
-import { jogo } from "../../types/types";
-import { createJogo, getJogos, deleteJogo } from "../../services/jogosService";
+import { user } from "../../types/types";
 import {
   ActivityIndicator,
   FlatList,
-  Image,
   Pressable,
   StyleSheet,
   Text,
   View,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { JogosScreenNavigationProp } from "../../types/screensType";
+import { UsersScreenNavigationProp } from "../../types/screensType";
+import { deleteUser, getUsers } from "../../services/userService";
 
-export const JogosScreen = () => {
-  const [jogo, setJogo] = useState("");
+export const UserScreen = () => {
+  const [user, setUser] = useState("");
   const [loading, setLoading] = useState(true);
-  const [listaJogos, setListaJogos] = useState<jogo[]>([]);
-  const navigation = useNavigation<JogosScreenNavigationProp>();
+  const [listaUsers, setListaUsers] = useState<user[]>([]);
+  const navigation = useNavigation<UsersScreenNavigationProp>();
 
-  const buscarJogos = async () => {
+  const buscarUsers = async () => {
     setLoading(true);
     try {
-      const nextlvlApi = await getJogos();
-      setListaJogos(nextlvlApi);
+      const nextlvlApi = await getUsers();
+      setListaUsers(nextlvlApi);
     } catch (err) {
-      console.log("Erro ao carregar jogos.", err);
+      console.log("Erro ao carregar usuários.", err);
     }
     setLoading(false);
   };
 
-  const adicionarJogo = async () => {
-    navigation.navigate("AdicionarJogo");
+  const adicionarUser = async () => {
+    navigation.navigate("AdicionarUser");
   };
 
-  const deletarJogo = async (id: number) => {
+  const deletarUser = async (id: number) => {
     try {
-      const jogoDeletadoApi = await deleteJogo(id);
-      const listaFiltrada = listaJogos.filter(
-        (item) => item.id !== jogoDeletadoApi.id
+      const userDeletadoApi = await deleteUser(id);
+      const listaFiltrada = listaUsers.filter(
+        (item) => item.id !== userDeletadoApi.id
       );
-      setListaJogos(listaFiltrada);
+      setListaUsers(listaFiltrada);
     } catch (err) {
-      console.log("Erro ao deletar jogo.", err);
+      console.log("Erro ao deletar usuário.", err);
     }
   };
 
-  const editarJogo = (itemJogo: jogo) => {
-    navigation.navigate("EditarJogo", { jogo: itemJogo });
+  const editarUser = (itemUser: user) => {
+    navigation.navigate("EditarUser", { user: itemUser });
   };
 
   useEffect(() => {
-    buscarJogos();
+    buscarUsers();
     const unsubscribe = navigation.addListener("focus", () => {
-      buscarJogos();
+      buscarUsers();
     });
     return unsubscribe;
   }, [navigation]);
@@ -61,8 +60,8 @@ export const JogosScreen = () => {
   return (
     <View style={styles.container}>
       <View>
-        <Pressable style={styles.botao} onPress={adicionarJogo}>
-          <Text>Adicionar novo jogo</Text>
+        <Pressable style={styles.botao} onPress={adicionarUser}>
+          <Text>Adicionar novo usuário</Text>
         </Pressable>
       </View>
       {loading ? (
@@ -71,19 +70,14 @@ export const JogosScreen = () => {
         </View>
       ) : (
         <FlatList
-          data={listaJogos}
+          data={listaUsers}
           renderItem={({ item, index }) => (
             <View>
-              <Image
-                source={{ uri: item.imagemurl }}
-                style={styles.imagem}
-                resizeMode="cover"
-              />
               <Text>{item.nome}</Text>
               <View>
                 <Pressable
                   style={styles.botao}
-                  onPress={() => editarJogo(item)}
+                  onPress={() => editarUser(item)}
                 >
                   <Text style={styles.textoBotao}>Alterar</Text>
                 </Pressable>
@@ -91,7 +85,7 @@ export const JogosScreen = () => {
                   style={styles.botao}
                   onPress={() => {
                     if (item.id !== undefined) {
-                      deletarJogo(item.id);
+                      deletarUser(item.id);
                     } else {
                       console.log("ID não definido para este item.");
                     }

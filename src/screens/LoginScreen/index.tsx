@@ -7,7 +7,6 @@ import {
   TextInput,
   Pressable,
   ImageBackground,
-  Button,
 } from "react-native";
 import { useState } from "react";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
