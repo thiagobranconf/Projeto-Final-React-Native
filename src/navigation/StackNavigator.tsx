@@ -1,14 +1,26 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { StyleSheet, Text, View } from "react-native";
 import { LoginScreen } from "../screens/LoginScreen";
 import { RegistroScreen } from "../screens/RegistroScreen";
+import { JogosScreen } from "../screens/JogosScreen";
+import { EditarJogoScreen } from "../screens/EditarJogoScreen";
+import { RootStackParamList } from "../types/screensType";
 
 const StackNavigator = () => {
-  const Stack = createNativeStackNavigator();
+  const Stack = createNativeStackNavigator<RootStackParamList>();
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name="Jogos"
+          component={JogosScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="EditarJogo"
+          component={EditarJogoScreen}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="Login"
           component={LoginScreen}
@@ -25,5 +37,3 @@ const StackNavigator = () => {
 };
 
 export default StackNavigator;
-
-const styles = StyleSheet.create({});
