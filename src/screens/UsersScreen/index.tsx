@@ -120,9 +120,9 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 8,
     width: "50%",
+    marginVertical: 10,
   },
   textoBotao: {
     color: "#fff",
-    fontSize: 20,
   },
 });
