@@ -3,13 +3,20 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: "rgba(238, 204, 215, 1)",
+  },
+  container: {
+    paddingTop: 20,
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  logoContainer: {
+    justifyContent: "center",
     alignItems: "center",
   },
   logo: {
-    width: 360,
-    height: 320,
-    marginLeft: "7%",
+    width: 130,
+    height: 200,
   },
   inputContainer: {
     flexDirection: "row",
@@ -27,33 +34,34 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
     width: "100%",
   },
-
-  loginButton: {
-    width: 380,
+  buttonContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  cadastrarButton: {
     backgroundColor: "#FF3276",
     borderRadius: 35,
     padding: 15,
-    height: 62,
-    marginTop: 15,
+    marginTop: 30,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    marginLeft: "4%",
+    width: "60%",
   },
-  loginButtonText: {
+  cadastrarButtonText: {
     textAlign: "center",
     padding: 5,
     color: "white",
     fontSize: 18,
     fontWeight: "bold",
   },
-  registerButton: {
+  loginButton: {
     marginTop: 18,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
   },
-  registerText: {
+  loginText: {
     textAlign: "center",
     color: "#000000",
     fontSize: 18,

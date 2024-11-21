@@ -2,7 +2,19 @@ import { RouteProp } from "@react-navigation/native";
 import { jogo, user } from "./types";
 import { StackNavigationProp } from "@react-navigation/stack";
 
-export type RootStackParamList = {
+// export type RootStackParamList = {
+//   Home: undefined;
+//   Login: undefined;
+//   Registro: undefined;
+//   Jogos: undefined;
+//   Users: undefined;
+//   EditarJogo: { jogo: jogo };
+//   AdicionarJogo: undefined;
+//   AdicionarUser: undefined;
+//   EditarUser: { user: user };
+// };
+
+export type DrawerParamList = {
   Home: undefined;
   Login: undefined;
   Registro: undefined;
@@ -14,25 +26,25 @@ export type RootStackParamList = {
   EditarUser: { user: user };
 };
 
-export type EditarJogoRouteProp = RouteProp<RootStackParamList, "EditarJogo">;
+export type EditarJogoRouteProp = RouteProp<DrawerParamList, "EditarJogo">;
 
-export type EditarUserRouteProp = RouteProp<RootStackParamList, "EditarUser">;
+export type EditarUserRouteProp = RouteProp<DrawerParamList, "EditarUser">;
 
 export type AdicionarJogoRouteProp = RouteProp<
-  RootStackParamList,
+  DrawerParamList,
   "AdicionarJogo"
 >;
 
 export type AdicionarUserRouteProp = RouteProp<
-  RootStackParamList,
+  DrawerParamList,
   "AdicionarUser"
 >;
 
 export type JogosScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
+  DrawerParamList,
   "Jogos"
 >;
 export type UsersScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
+  DrawerParamList,
   "Users"
 >;

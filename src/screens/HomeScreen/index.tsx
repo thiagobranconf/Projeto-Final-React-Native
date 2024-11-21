@@ -1,19 +1,26 @@
 import React from "react";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { Pressable, StyleSheet, Text, View, ImageBackground } from "react-native";
-import { RootStackParamList } from "../../types/screensType";
+import {
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+  ImageBackground,
+} from "react-native";
+import { DrawerParamList } from "../../types/screensType";
 
 export const HomeScreen = () => {
-  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const navigation = useNavigation<NavigationProp<DrawerParamList>>();
 
   return (
     <ImageBackground
-      source={require("../../../assets/imagemBackground.jpg")}
+      source={require("../../../assets/controle.png")}
+      imageStyle={styles.imgbg}
       style={styles.background}
       resizeMode="cover"
     >
       <View style={styles.overlay} />
-      
+
       <View style={styles.container}>
         <Text style={styles.titulo}>Painel de Controle Interno</Text>
         <Pressable
@@ -47,11 +54,17 @@ export const HomeScreen = () => {
 
 const styles = StyleSheet.create({
   background: {
-    flex: 1,
+    position: "relative",
+    height: "100%",
+  },
+  imgbg: {
+    position: "absolute",
+    top: "4%",
+    width: "250%",
   },
   overlay: {
-    ...StyleSheet.absoluteFillObject, 
-    backgroundColor: "rgba(0, 0, 0, 0.3)", 
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "rgba(0, 0, 0, 0.3)",
   },
   container: {
     flex: 1,
