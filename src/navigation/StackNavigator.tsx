@@ -12,6 +12,7 @@ import { UserScreen } from "../screens/UsersScreen";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import DrawerContent from "../components/DrawerContent/DrawerContent";
 import { NavbarWrapper } from "../components/NavbarWrapper/NavbarWrapper";
+import DetalhesJogoScreen from "../screens/DetalhesJogoScreen";
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
 
@@ -110,8 +111,18 @@ const StackNavigator = () => {
           )}
           options={{ headerShown: false }}
         />
+        <Drawer.Screen
+          name="DetalhesJogo"
+          component={() => (
+            <NavbarWrapper>
+              <DetalhesJogoScreen />
+            </NavbarWrapper>
+          )}
+          options={{ headerShown: false }}
+        />
       </Drawer.Navigator>
-      {/*<Stack.Navigator>
+      {/*
+      <Stack.Navigator>
         <Stack.Screen
           name="Home"
           component={HomeScreen}
@@ -146,7 +157,7 @@ const StackNavigator = () => {
           name="EditarUser"
           component={EditarUserScreen}
           options={{ headerShown: true }}
-        />
+        /> 
         <Stack.Screen
           name="Login"
           component={LoginScreen}
@@ -157,7 +168,8 @@ const StackNavigator = () => {
           component={RegistroScreen}
           options={{ headerShown: false }}
         />
-      </Stack.Navigator>*/}
+      </Stack.Navigator>
+      */}
     </NavigationContainer>
   );
 };

@@ -2,17 +2,17 @@ import { RouteProp } from "@react-navigation/native";
 import { jogo, user } from "./types";
 import { StackNavigationProp } from "@react-navigation/stack";
 
-// export type RootStackParamList = {
+//export type RootStackParamList = {
 //   Home: undefined;
-//   Login: undefined;
-//   Registro: undefined;
+//Login: undefined;
+//Registro: undefined;
 //   Jogos: undefined;
 //   Users: undefined;
 //   EditarJogo: { jogo: jogo };
 //   AdicionarJogo: undefined;
 //   AdicionarUser: undefined;
 //   EditarUser: { user: user };
-// };
+//};
 
 export type DrawerParamList = {
   Home: undefined;
@@ -24,7 +24,10 @@ export type DrawerParamList = {
   AdicionarJogo: undefined;
   AdicionarUser: undefined;
   EditarUser: { user: user };
+  DetalhesJogo: { jogo: jogo };
 };
+
+export type DetalhesJogoRouteProp = RouteProp<DrawerParamList, "DetalhesJogo">;
 
 export type EditarJogoRouteProp = RouteProp<DrawerParamList, "EditarJogo">;
 
