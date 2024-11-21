@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 import { DrawerContentComponentProps } from "@react-navigation/drawer";
+import { useAuth } from "../../contexts/AuthContext";
 
 const DrawerContent = (props: DrawerContentComponentProps) => {
   const { navigation } = props;
+
+  const { user, logout } = useAuth();
 
   const navigateToScreen = (screen: string) => {
     navigation.navigate(screen);
@@ -16,7 +19,7 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
           style={styles.avatar}
           source={require("../../../assets/CUBO_SEM_NOME.png")}
         />
-        <Text style={styles.name}>Olá, Usuário</Text>
+        <Text style={styles.name}>Olá, {user ? user.nome : "Visitante"}</Text>
       </View>
       <Pressable
         style={styles.menuItem}
@@ -37,10 +40,7 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
         <Text style={styles.menuText}>Usuários</Text>
       </Pressable>
       <View style={styles.footer}>
-        <Pressable
-          style={styles.footerButton}
-          onPress={() => console.log("Sair")}
-        >
+        <Pressable style={styles.footerButton} onPress={() => logout()}>
           <Text style={styles.footerText}>🔓 Sair</Text>
         </Pressable>
       </View>

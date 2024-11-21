@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { useState } from "react";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
-import { DrawerParamList } from "../../types/screensType";
+import { RootStackParamList } from "../../types/screensType";
 import { styles } from "./styles";
 import api from "../../services/api";
 
@@ -22,7 +22,7 @@ export const RegistroScreen = () => {
   const [confirmaSenha, setConfirmaSenha] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const navigation = useNavigation<NavigationProp<DrawerParamList>>();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const handleRegister = async () => {
     if (senha !== confirmaSenha) {
