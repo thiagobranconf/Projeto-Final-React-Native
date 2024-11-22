@@ -35,18 +35,6 @@ export const HomeScreen = () => {
         >
           <Text style={styles.textoBotao}>Usuários</Text>
         </Pressable>
-        <Pressable
-          style={styles.botao}
-          onPress={() => navigation.navigate("Registro")}
-        >
-          <Text style={styles.textoBotao}>Cadastro</Text>
-        </Pressable>
-        <Pressable
-          style={styles.botao}
-          onPress={() => navigation.navigate("Login")}
-        >
-          <Text style={styles.textoBotao}>Login</Text>
-        </Pressable>
       </View>
     </ImageBackground>
   );

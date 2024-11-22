@@ -1,6 +1,7 @@
 import { DrawerNavigationProp } from "@react-navigation/drawer";
 import { DrawerActions, useNavigation } from "@react-navigation/native";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { RootStackParamList } from "../../types/screensType";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useFonts } from "expo-font";
 import { styles } from "./styles";
@@ -20,9 +21,11 @@ export const Navbar = () => {
   };
   return (
     <View style={styles.container}>
-      <Pressable onPress={handleBackPress} style={styles.back}>
-        <Ionicons name="arrow-back" size={24} color="white" />
-      </Pressable>
+      {route.name !== "Home" && (
+        <Pressable onPress={handleBackPress} style={styles.back}>
+          <Ionicons name="arrow-back" size={24} color="white" />
+        </Pressable>
+      )}
 
       <View style={styles.logoContainer}>
         <Image

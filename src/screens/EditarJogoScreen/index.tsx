@@ -11,7 +11,7 @@ export const EditarJogoScreen = () => {
 
   const [nome, setNome] = useState(jogoAtual.nome);
   const [descricao, setDescricao] = useState(jogoAtual.descricao);
-  const [preco, setPreco] = useState(jogoAtual.preco);
+  const [preco, setPreco] = useState(jogoAtual.preco.toString());
   const [categoria, setCategoria] = useState(jogoAtual.categoria);
   const [imagemurl, setImagemUrl] = useState(jogoAtual.imagemurl);
 
@@ -20,7 +20,7 @@ export const EditarJogoScreen = () => {
       id: jogoAtual.id,
       nome,
       descricao,
-      preco,
+      preco: parseFloat(preco),
       categoria,
       imagemurl,
     };
@@ -54,13 +54,8 @@ export const EditarJogoScreen = () => {
       />
       <TextInput
         style={styles.input}
-        value={preco.toString()}
-        onChangeText={(text) => {
-          const parsedPreco = parseFloat(text);
-          if (!isNaN(parsedPreco)) {
-            setPreco(parsedPreco);
-          }
-        }}
+        value={preco}
+        onChangeText={setPreco}
         placeholder="Preço"
         keyboardType="numeric"
       />
