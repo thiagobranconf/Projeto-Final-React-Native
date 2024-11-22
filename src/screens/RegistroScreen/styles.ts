@@ -3,12 +3,20 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: "rgba(238, 204, 215, 1)",
+  },
+  container: {
+    paddingTop: 20,
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  logoContainer: {
+    justifyContent: "center",
     alignItems: "center",
   },
   logo: {
-    width: 360,
-    height: 320,
+    width: 130,
+    height: 200,
   },
   inputContainer: {
     flexDirection: "row",
@@ -26,32 +34,34 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
     width: "100%",
   },
-
-  loginButton: {
-    width: 380,
-    backgroundColor: "#FF3276",
-    borderRadius: 35,
-    padding: 15,
-    height: 62,
-    marginTop: 15,
-    flexDirection: "row",
+  buttonContainer: {
     alignItems: "center",
     justifyContent: "center",
   },
-  loginButtonText: {
+  cadastrarButton: {
+    backgroundColor: "#FF3276",
+    borderRadius: 35,
+    padding: 15,
+    marginTop: 30,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "60%",
+  },
+  cadastrarButtonText: {
     textAlign: "center",
     padding: 5,
     color: "white",
     fontSize: 18,
     fontWeight: "bold",
   },
-  registerButton: {
+  loginButton: {
     marginTop: 18,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
   },
-  registerText: {
+  loginText: {
     textAlign: "center",
     color: "#000000",
     fontSize: 18,
@@ -69,5 +79,10 @@ export const styles = StyleSheet.create({
     position: "absolute",
     top: "25%",
     width: "150%",
+  },
+  errorText: {
+    color: "red",
+    textAlign: "center",
+    marginTop: 10,
   },
 });
