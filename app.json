@@ -4,23 +4,21 @@
     "slug": "projeto-final-react",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/CUBO_SEM_NOME.png",
+    "icon": "./assets/gifAnimado.gif",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/CUBO_SEM_NOME.png",
+      "image": "./assets/gifAnimado.gif",
       "resizeMode": "contain",
-      "backgroundColor": "#000000",
-      "imageWidth": 200
+      "backgroundColor": "#000000"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/CUBO_SEM_NOME.png",
-        "backgroundColor": "#000000",
-        "imageWidth": 200
+        "foregroundImage": "./assets/gifAnimado.gif",
+        "backgroundColor": "#000000"
       }
     },
     "web": {
