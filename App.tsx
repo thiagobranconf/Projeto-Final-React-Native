@@ -7,6 +7,7 @@ import { ActivityIndicator, View } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 import DrawerNavigator from "./src/navigation/DrawerNavigator";
 import { Rotas } from "./src/navigation";
+import ConnectionStatus from "./src/components/ConnectionStatus";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -28,6 +29,7 @@ const App = () => {
   return (
     <AuthProvider>
       <NavigationContainer>
+        <ConnectionStatus />
         <Rotas />
       </NavigationContainer>
     </AuthProvider>
