@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { jogo } from "../../types/types";
-import { createJogo, getJogos, deleteJogo } from "../../services/jogosService";
+import { getJogos, deleteJogo } from "../../services/jogosService";
 import {
   ActivityIndicator,
   FlatList,
@@ -15,7 +15,6 @@ import { JogosScreenNavigationProp } from "../../types/screensType";
 import { NavbarWrapper } from "../../components/NavbarWrapper/NavbarWrapper";
 
 export const JogosScreen = () => {
-  const [jogo, setJogo] = useState("");
   const [loading, setLoading] = useState(true);
   const [listaJogos, setListaJogos] = useState<jogo[]>([]);
   const navigation = useNavigation<JogosScreenNavigationProp>();

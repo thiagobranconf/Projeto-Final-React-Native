@@ -14,7 +14,6 @@ import { deleteUser, getUsers } from "../../services/userService";
 import { NavbarWrapper } from "../../components/NavbarWrapper/NavbarWrapper";
 
 export const UserScreen = () => {
-  const [user, setUser] = useState("");
   const [loading, setLoading] = useState(true);
   const [listaUsers, setListaUsers] = useState<user[]>([]);
   const navigation = useNavigation<UsersScreenNavigationProp>();
