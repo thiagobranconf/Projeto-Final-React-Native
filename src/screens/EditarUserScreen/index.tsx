@@ -37,32 +37,37 @@ export const EditarUserScreen = () => {
   return (
     <NavbarWrapper>
       <View style={styles.container}>
-        <Text>ID: {userAtual.id}</Text>
-        <TextInput
-          style={styles.input}
-          value={nome}
-          onChangeText={setNome}
-          placeholder="Nome"
-        />
-        <TextInput
-          style={styles.input}
-          value={email}
-          onChangeText={setEmail}
-          placeholder="Email"
-        />
-        <TextInput
-          style={styles.input}
-          value={senha}
-          onChangeText={setSenha}
-          placeholder="Senha"
-        />
-        <View style={styles.botaoContainer}>
-          <Pressable style={styles.botao} onPress={salvar}>
-            <Text style={styles.textoBotao}>Salvar</Text>
-          </Pressable>
-          <Pressable style={styles.botao} onPress={cancelar}>
-            <Text style={styles.textoBotao}>Cancelar</Text>
-          </Pressable>
+        <View style={styles.containerAlterar}>
+          <Text style={styles.add}>Editar usuário</Text>
+        </View>
+        <View style={styles.containerInput}>
+          <Text>ID: {userAtual.id}</Text>
+          <TextInput
+            style={styles.input}
+            value={nome}
+            onChangeText={setNome}
+            placeholder="Nome"
+          />
+          <TextInput
+            style={styles.input}
+            value={email}
+            onChangeText={setEmail}
+            placeholder="Email"
+          />
+          <TextInput
+            style={styles.input}
+            value={senha}
+            onChangeText={setSenha}
+            placeholder="Senha"
+          />
+          <View style={styles.botaoContainer}>
+            <Pressable style={styles.botao} onPress={salvar}>
+              <Text style={styles.textoBotao}>Salvar</Text>
+            </Pressable>
+            <Pressable style={styles.botao} onPress={cancelar}>
+              <Text style={styles.textoBotao}>Cancelar</Text>
+            </Pressable>
+          </View>
         </View>
       </View>
     </NavbarWrapper>
@@ -73,6 +78,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+    backgroundColor: "#ffffff",
+  },
+  containerInput: {
+    marginTop: "5%",
+  },
+  containerAlterar: {
+    backgroundColor: "#000000",
+    padding: 16,
+    borderRadius: 8,
+    marginTop: 16,
+  },
+  add: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#ffffff",
+    textAlign: "center",
   },
   input: {
     borderWidth: 1,

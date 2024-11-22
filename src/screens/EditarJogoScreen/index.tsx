@@ -41,50 +41,50 @@ export const EditarJogoScreen = () => {
   return (
     <NavbarWrapper>
       <View style={styles.container}>
-        <Text>ID: {jogoAtual.id}</Text>
-        <TextInput
-          style={styles.input}
-          value={nome}
-          onChangeText={setNome}
-          placeholder="Nome"
-        />
-        <TextInput
-          style={styles.input}
-          value={descricao}
-          onChangeText={setDescricao}
-          placeholder="Descrição"
-        />
-        <TextInput
-          style={styles.input}
-          value={preco.toString()}
-          onChangeText={(text) => {
-            const parsedPreco = parseFloat(text);
-            if (!isNaN(parsedPreco)) {
-              setPreco(parsedPreco);
-            }
-          }}
-          placeholder="Preço"
-          keyboardType="numeric"
-        />
-        <TextInput
-          style={styles.input}
-          value={categoria}
-          onChangeText={setCategoria}
-          placeholder="Categoria"
-        />
-        <TextInput
-          style={styles.input}
-          value={imagemurl}
-          onChangeText={setImagemUrl}
-          placeholder="URL da Imagem"
-        />
-        <View style={styles.botaoContainer}>
-          <Pressable style={styles.botao} onPress={cancelar}>
-            <Text style={styles.textoBotao}>Cancelar</Text>
-          </Pressable>
-          <Pressable style={styles.botao} onPress={salvar}>
-            <Text style={styles.textoBotao}>Salvar</Text>
-          </Pressable>
+        <View style={styles.containerAlterar}>
+          <Text style={styles.alterar}>Alterar Jogo</Text>
+        </View>
+        <View style={styles.containerInput}>
+          <Text>ID: {jogoAtual.id}</Text>
+          <TextInput
+            style={styles.input}
+            value={nome}
+            onChangeText={setNome}
+            placeholder="Nome"
+          />
+          <TextInput
+            style={styles.input}
+            value={descricao}
+            onChangeText={setDescricao}
+            placeholder="Descrição"
+          />
+          <TextInput
+            style={styles.input}
+            value={preco}
+            onChangeText={setPreco}
+            placeholder="Preço"
+            keyboardType="numeric"
+          />
+          <TextInput
+            style={styles.input}
+            value={categoria}
+            onChangeText={setCategoria}
+            placeholder="Categoria"
+          />
+          <TextInput
+            style={styles.input}
+            value={imagemurl}
+            onChangeText={setImagemUrl}
+            placeholder="URL da Imagem"
+          />
+          <View style={styles.botaoContainer}>
+            <Pressable style={styles.botao} onPress={cancelar}>
+              <Text style={styles.textoBotao}>Cancelar</Text>
+            </Pressable>
+            <Pressable style={styles.botao} onPress={salvar}>
+              <Text style={styles.textoBotao}>Salvar</Text>
+            </Pressable>
+          </View>
         </View>
       </View>
     </NavbarWrapper>
@@ -95,6 +95,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+    backgroundColor: "#ffffff",
+  },
+  containerInput: {
+    marginTop: "5%",
+  },
+  containerAlterar: {
+    backgroundColor: "#000000",
+    padding: 16,
+    borderRadius: 8,
+    marginTop: 16,
+  },
+  alterar: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#ffffff",
+    textAlign: "center",
   },
   input: {
     borderWidth: 1,
