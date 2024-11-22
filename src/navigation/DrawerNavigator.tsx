@@ -7,6 +7,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import DrawerContent from "../components/DrawerContent/DrawerContent";
 import JogosNavigator from "./JogosNavigator";
 import UsersNavigator from "./UsersNavigator";
+import { NossaEquipe } from "../screens/NossaEquipeScreen/Index";
 
 const Drawer = createDrawerNavigator();
 
@@ -35,6 +36,11 @@ const DrawerNavigator = () => {
       <Drawer.Screen
         name="Users"
         component={UsersNavigator}
+        options={{ headerShown: false }}
+      />
+      <Drawer.Screen
+        name="NossaEquipe"
+        component={NossaEquipe}
         options={{ headerShown: false }}
       />
     </Drawer.Navigator>

@@ -15,6 +15,7 @@ export type DrawerParamList = {
   // AdicionarJogo: undefined;
   AdicionarUser: undefined;
   EditarUser: { user: user };
+  NossaEquipe: undefined;
   // DetalhesJogo: { jogo: jogo };
 };
 
