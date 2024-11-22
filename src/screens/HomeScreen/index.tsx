@@ -44,6 +44,12 @@ export const HomeScreen = () => {
           >
             <Text style={styles.textoBotao}>Usuários</Text>
           </Pressable>
+          {/* <Pressable
+            style={styles.botao}
+            onPress={() => navigation.navigate("NossaEquipe")}
+          >
+            <Text style={styles.textoBotao}>Nossa Equipe</Text>
+          </Pressable> */}
         </View>
       </ImageBackground>
     </NavbarWrapper>
