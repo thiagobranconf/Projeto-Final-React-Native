@@ -30,92 +30,42 @@ const DrawerNavigator = () => {
     >
       <Drawer.Screen
         name="Home"
-        component={() => (
-          <NavbarWrapper>
-            <HomeScreen />
-          </NavbarWrapper>
-        )}
+        component={HomeScreen}
         options={{ headerShown: false }}
       />
       <Drawer.Screen
         name="Jogos"
-        component={() => (
-          <NavbarWrapper>
-            <JogosScreen />
-          </NavbarWrapper>
-        )}
+        component={JogosScreen}
         options={{ headerShown: false }}
       />
       <Drawer.Screen
         name="EditarJogo"
-        component={() => (
-          <NavbarWrapper>
-            <EditarJogoScreen />
-          </NavbarWrapper>
-        )}
+        component={EditarJogoScreen}
         options={{ headerShown: false }}
       />
       <Drawer.Screen
         name="AdicionarJogo"
-        component={() => (
-          <NavbarWrapper>
-            <AdicionarJogoScreen />
-          </NavbarWrapper>
-        )}
+        component={AdicionarJogoScreen}
         options={{ headerShown: false }}
       />
       <Drawer.Screen
         name="Users"
-        component={() => (
-          <NavbarWrapper>
-            <UserScreen />
-          </NavbarWrapper>
-        )}
+        component={UserScreen}
         options={{ headerShown: false }}
       />
       <Drawer.Screen
         name="EditarUser"
-        component={() => (
-          <NavbarWrapper>
-            <EditarUserScreen />
-          </NavbarWrapper>
-        )}
+        component={EditarUserScreen}
         options={{ headerShown: false }}
       />
       <Drawer.Screen
         name="AdicionarUser"
-        component={() => (
-          <NavbarWrapper>
-            <AdicionarUserScreen />
-          </NavbarWrapper>
-        )}
+        component={AdicionarUserScreen}
         options={{ headerShown: false }}
       />
-      {/* <Drawer.Screen
-          name="Login"
-          component={() => (
-            <NavbarWrapper>
-              <LoginScreen />
-            </NavbarWrapper>
-          )}
-          options={{ headerShown: false }}
-        />
-        <Drawer.Screen
-          name="Registro"
-          component={() => (
-            <NavbarWrapper>
-              <RegistroScreen />
-            </NavbarWrapper>
-          )}
-          options={{ headerShown: false }}
-        /> */}
       <Drawer.Screen
         name="DetalhesJogo"
-        component={() => (
-          <NavbarWrapper>
-            <DetalhesJogoScreen />
-          </NavbarWrapper>
-        )}
+        component={DetalhesJogoScreen}
         options={{ headerShown: false }}
       />
     </Drawer.Navigator>

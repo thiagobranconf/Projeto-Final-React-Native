@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import {
   Pressable,
@@ -8,47 +8,45 @@ import {
   ImageBackground,
 } from "react-native";
 import { DrawerParamList } from "../../types/screensType";
+import { NavbarWrapper } from "../../components/NavbarWrapper/NavbarWrapper";
 
 export const HomeScreen = () => {
   const navigation = useNavigation<NavigationProp<DrawerParamList>>();
 
-  return (
-    <ImageBackground
-      source={require("../../../assets/controle.png")}
-      imageStyle={styles.imgbg}
-      style={styles.background}
-      resizeMode="cover"
-    >
-      <View style={styles.overlay} />
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => null,
+    });
+  }),
+    [navigation];
 
-      <View style={styles.container}>
-        <Text style={styles.titulo}>Painel de Controle Interno</Text>
-        <Pressable
-          style={styles.botao}
-          onPress={() => navigation.navigate("Jogos")}
-        >
-          <Text style={styles.textoBotao}>Jogos</Text>
-        </Pressable>
-        <Pressable
-          style={styles.botao}
-          onPress={() => navigation.navigate("Users")}
-        >
-          <Text style={styles.textoBotao}>Usuários</Text>
-        </Pressable>
-        <Pressable
-          style={styles.botao}
-          onPress={() => navigation.navigate("Registro")}
-        >
-          <Text style={styles.textoBotao}>Cadastro</Text>
-        </Pressable>
-        <Pressable
-          style={styles.botao}
-          onPress={() => navigation.navigate("Login")}
-        >
-          <Text style={styles.textoBotao}>Login</Text>
-        </Pressable>
-      </View>
-    </ImageBackground>
+  return (
+    <NavbarWrapper>
+      <ImageBackground
+        source={require("../../../assets/controle.png")}
+        imageStyle={styles.imgbg}
+        style={styles.background}
+        resizeMode="cover"
+      >
+        <View style={styles.overlay} />
+
+        <View style={styles.container}>
+          <Text style={styles.titulo}>Painel de Controle Interno</Text>
+          <Pressable
+            style={styles.botao}
+            onPress={() => navigation.navigate("Jogos")}
+          >
+            <Text style={styles.textoBotao}>Jogos</Text>
+          </Pressable>
+          <Pressable
+            style={styles.botao}
+            onPress={() => navigation.navigate("Users")}
+          >
+            <Text style={styles.textoBotao}>Usuários</Text>
+          </Pressable>
+        </View>
+      </ImageBackground>
+    </NavbarWrapper>
   );
 };
 

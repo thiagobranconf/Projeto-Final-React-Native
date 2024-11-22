@@ -5,7 +5,6 @@ import { StackNavigationProp } from "@react-navigation/stack";
 export type RootStackParamList = {
   Login: undefined;
   Registro: undefined;
-  Jogos: RouteProp<DrawerParamList, "Jogos">;
 };
 
 export type DrawerParamList = {

@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { JogosScreenNavigationProp } from "../../types/screensType";
+import { NavbarWrapper } from "../../components/NavbarWrapper/NavbarWrapper";
 
 export const JogosScreen = () => {
   const [jogo, setJogo] = useState("");
@@ -63,61 +64,63 @@ export const JogosScreen = () => {
   }, [navigation]);
 
   return (
-    <View style={styles.container}>
-      <View>
-        <Pressable style={styles.botaoAdd} onPress={adicionarJogo}>
-          <Text style={styles.textAdd}>Adicionar novo jogo</Text>
-        </Pressable>
-      </View>
-      {loading ? (
+    <NavbarWrapper>
+      <View style={styles.container}>
         <View>
-          <ActivityIndicator size="large" />
+          <Pressable style={styles.botaoAdd} onPress={adicionarJogo}>
+            <Text style={styles.textAdd}>Adicionar novo jogo</Text>
+          </Pressable>
         </View>
-      ) : (
-        <FlatList
-          data={listaJogos}
-          renderItem={({ item }) => (
-            <View style={styles.card}>
-              <Image
-                source={{ uri: item.imagemurl }}
-                style={styles.imagem}
-                resizeMode="cover"
-              />
-              <View style={styles.conteudoCard}>
-                <Text style={styles.nomeJogo}>{item.nome}</Text>
-                <View style={styles.botoesContainer}>
-                  <Pressable
-                    style={styles.botao}
-                    onPress={() => editarJogo(item)}
-                  >
-                    <Text style={styles.textoBotao}>Alterar</Text>
-                  </Pressable>
-                  <Pressable
-                    style={styles.botao}
-                    onPress={() => {
-                      if (item.id !== undefined) {
-                        deletarJogo(item.id);
-                      } else {
-                        console.log("ID não definido para este item.");
-                      }
-                    }}
-                  >
-                    <Text style={styles.textoBotao}>Deletar</Text>
-                  </Pressable>
-                  <Pressable
-                    style={styles.botao}
-                    onPress={() => verDetalhes(item)}
-                  >
-                    <Text style={styles.textoBotao}>Ver detalhes</Text>
-                  </Pressable>
+        {loading ? (
+          <View>
+            <ActivityIndicator size="large" />
+          </View>
+        ) : (
+          <FlatList
+            data={listaJogos}
+            renderItem={({ item }) => (
+              <View style={styles.card}>
+                <Image
+                  source={{ uri: item.imagemurl }}
+                  style={styles.imagem}
+                  resizeMode="cover"
+                />
+                <View style={styles.conteudoCard}>
+                  <Text style={styles.nomeJogo}>{item.nome}</Text>
+                  <View style={styles.botoesContainer}>
+                    <Pressable
+                      style={styles.botao}
+                      onPress={() => editarJogo(item)}
+                    >
+                      <Text style={styles.textoBotao}>Alterar</Text>
+                    </Pressable>
+                    <Pressable
+                      style={styles.botao}
+                      onPress={() => {
+                        if (item.id !== undefined) {
+                          deletarJogo(item.id);
+                        } else {
+                          console.log("ID não definido para este item.");
+                        }
+                      }}
+                    >
+                      <Text style={styles.textoBotao}>Deletar</Text>
+                    </Pressable>
+                    <Pressable
+                      style={styles.botao}
+                      onPress={() => verDetalhes(item)}
+                    >
+                      <Text style={styles.textoBotao}>Ver detalhes</Text>
+                    </Pressable>
+                  </View>
                 </View>
               </View>
-            </View>
-          )}
-          keyExtractor={(item, index) => index.toString()}
-        />
-      )}
-    </View>
+            )}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        )}
+      </View>
+    </NavbarWrapper>
   );
 };
 
