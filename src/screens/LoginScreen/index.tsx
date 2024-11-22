@@ -11,9 +11,8 @@ import {
 } from "react-native";
 import { useState } from "react";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
-import { DrawerParamList, RootStackParamList } from "../../types/screensType";
+import { RootStackParamList } from "../../types/screensType";
 import { styles } from "./styles";
-import api from "../../services/api";
 import { useAuth } from "../../contexts/AuthContext";
 
 export const LoginScreen = () => {
@@ -22,7 +21,6 @@ export const LoginScreen = () => {
   const [error, setError] = useState("");
   const { login, loading } = useAuth();
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-  const navigationdrawer = useNavigation<NavigationProp<DrawerParamList>>();
 
   const handleLogin = async () => {
     setError("");
