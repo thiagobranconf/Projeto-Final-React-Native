@@ -1,7 +1,10 @@
 import { DrawerNavigationProp } from "@react-navigation/drawer";
-import { DrawerActions, useNavigation } from "@react-navigation/native";
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
-import { RootStackParamList } from "../../types/screensType";
+import {
+  DrawerActions,
+  useNavigation,
+  useRoute,
+} from "@react-navigation/native";
+import { Image, Pressable, Text, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useFonts } from "expo-font";
 import { styles } from "./styles";
@@ -11,17 +14,20 @@ export const Navbar = () => {
   const [fontsLoaded] = useFonts({
     "Bungee-Regular": require("../../../assets/fonts/Bungee-Regular.ttf"),
   });
+  const route = useRoute();
 
   if (!fontsLoaded) {
     return <Text>NEXTLEVEL</Text>;
   }
+
+  const isHomeScreen = route.name === "Home";
 
   const handleBackPress = () => {
     navigation.goBack();
   };
   return (
     <View style={styles.container}>
-      {route.name !== "Home" && (
+      {!isHomeScreen && (
         <Pressable onPress={handleBackPress} style={styles.back}>
           <Ionicons name="arrow-back" size={24} color="white" />
         </Pressable>

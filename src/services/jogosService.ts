@@ -20,3 +20,9 @@ export const updateJogo = async (JogoEditado: jogo): Promise<jogo> => {
   const { data } = await api.put("/jogos/" + JogoEditado.id, JogoEditado);
   return data;
 };
+
+export const getCategorias = async (): Promise<string[]> => {
+  const { data } = await api.get<jogo[]>("/jogos");
+  const categorias = [...new Set(data.map((jogo: jogo) => jogo.categoria))];
+  return categorias;
+};

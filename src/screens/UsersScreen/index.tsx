@@ -11,9 +11,9 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { UsersScreenNavigationProp } from "../../types/screensType";
 import { deleteUser, getUsers } from "../../services/userService";
+import { NavbarWrapper } from "../../components/NavbarWrapper/NavbarWrapper";
 
 export const UserScreen = () => {
-  const [user, setUser] = useState("");
   const [loading, setLoading] = useState(true);
   const [listaUsers, setListaUsers] = useState<user[]>([]);
   const navigation = useNavigation<UsersScreenNavigationProp>();
@@ -58,48 +58,50 @@ export const UserScreen = () => {
   }, [navigation]);
 
   return (
-    <View style={styles.container}>
-      <View>
-        <Pressable style={styles.botao} onPress={adicionarUser}>
-          <Text>Adicionar novo usuário</Text>
-        </Pressable>
-      </View>
-      {loading ? (
+    <NavbarWrapper>
+      <View style={styles.container}>
         <View>
-          <ActivityIndicator size="large" />
+          <Pressable style={styles.botao} onPress={adicionarUser}>
+            <Text>Adicionar novo usuário</Text>
+          </Pressable>
         </View>
-      ) : (
-        <FlatList
-          data={listaUsers}
-          renderItem={({ item, index }) => (
-            <View>
-              <Text>{item.nome}</Text>
+        {loading ? (
+          <View>
+            <ActivityIndicator size="large" />
+          </View>
+        ) : (
+          <FlatList
+            data={listaUsers}
+            renderItem={({ item, index }) => (
               <View>
-                <Pressable
-                  style={styles.botao}
-                  onPress={() => editarUser(item)}
-                >
-                  <Text style={styles.textoBotao}>Alterar</Text>
-                </Pressable>
-                <Pressable
-                  style={styles.botao}
-                  onPress={() => {
-                    if (item.id !== undefined) {
-                      deletarUser(item.id);
-                    } else {
-                      console.log("ID não definido para este item.");
-                    }
-                  }}
-                >
-                  <Text style={styles.textoBotao}>Deletar</Text>
-                </Pressable>
+                <Text>{item.nome}</Text>
+                <View>
+                  <Pressable
+                    style={styles.botao}
+                    onPress={() => editarUser(item)}
+                  >
+                    <Text style={styles.textoBotao}>Alterar</Text>
+                  </Pressable>
+                  <Pressable
+                    style={styles.botao}
+                    onPress={() => {
+                      if (item.id !== undefined) {
+                        deletarUser(item.id);
+                      } else {
+                        console.log("ID não definido para este item.");
+                      }
+                    }}
+                  >
+                    <Text style={styles.textoBotao}>Deletar</Text>
+                  </Pressable>
+                </View>
               </View>
-            </View>
-          )}
-          keyExtractor={(item, index) => index.toString()}
-        />
-      )}
-    </View>
+            )}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        )}
+      </View>
+    </NavbarWrapper>
   );
 };
 
