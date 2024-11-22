@@ -1,12 +1,12 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
-import { RouteProp, useRoute } from "@react-navigation/native";
+import { useRoute } from "@react-navigation/native";
 import { DetalhesJogoRouteProp } from "../../types/screensType";
 import { NavbarWrapper } from "../../components/NavbarWrapper/NavbarWrapper";
 
 export const DetalhesJogoScreen = () => {
   const route = useRoute<DetalhesJogoRouteProp>();
-  const { nome, imagemurl, descricao } = route.params.jogo;
+  const { nome, imagemurl, descricao, preco } = route.params.jogo;
 
   return (
     <NavbarWrapper>
@@ -16,8 +16,14 @@ export const DetalhesJogoScreen = () => {
         </View>
         <Text style={styles.nome}>{nome}</Text>
         <Image source={{ uri: imagemurl }} style={styles.imagem} />
-        <Text style={styles.descricao}>Descrição</Text>
-        <Text style={styles.descricaoJogo}>{descricao}</Text>
+        <View>
+          <Text style={styles.descricao}>Descrição</Text>
+          <Text style={styles.descricaoJogo}>{descricao}</Text>
+        </View>
+        <View style={styles.precoContainer}>
+          <Text style={styles.preco}>Preço R$</Text>
+          <Text style={styles.precoJogo}>{preco}</Text>
+        </View>
       </View>
     </NavbarWrapper>
   );
@@ -62,6 +68,19 @@ const styles = StyleSheet.create({
   descricaoJogo: {
     fontSize: 16,
     textAlign: "center",
+  },
+  precoContainer: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    gap: 5,
+    paddingVertical: 10,
+  },
+  preco: {
+    fontSize: 24,
+    fontWeight: "600",
+  },
+  precoJogo: {
+    fontSize: 24,
   },
 });
 

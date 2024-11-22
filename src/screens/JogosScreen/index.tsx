@@ -1,29 +1,52 @@
 import { useEffect, useState } from "react";
 import { jogo } from "../../types/types";
-import { getJogos, deleteJogo } from "../../services/jogosService";
+import {
+  getJogos,
+  deleteJogo,
+  getCategorias,
+} from "../../services/jogosService";
 import {
   ActivityIndicator,
   FlatList,
   Image,
   Pressable,
-  StyleSheet,
+  ScrollView,
+  Switch,
   Text,
   View,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { JogosScreenNavigationProp } from "../../types/screensType";
 import { NavbarWrapper } from "../../components/NavbarWrapper/NavbarWrapper";
+import { TextInput } from "react-native-gesture-handler";
+import { styles } from "./styles";
 
 export const JogosScreen = () => {
   const [loading, setLoading] = useState(true);
   const [listaJogos, setListaJogos] = useState<jogo[]>([]);
+  const [todasCategorias, setTodasCategorias] = useState<string[]>([]);
+  const [filtroCategoria, setFiltroCategoria] = useState<string[]>([]);
+  const [filtroPrecoMin, setFiltroPrecoMin] = useState<number | null>(null);
+  const [filtroPrecoMax, setFiltroPrecoMax] = useState<number | null>(null);
+
   const navigation = useNavigation<JogosScreenNavigationProp>();
 
   const buscarJogos = async () => {
     setLoading(true);
     try {
       const nextlvlApi = await getJogos();
-      setListaJogos(nextlvlApi);
+      const jogosFiltrados = nextlvlApi.filter((jogo) => {
+        const precoMinOk =
+          filtroPrecoMin === null || jogo.preco >= filtroPrecoMin;
+        const precoMaxOk =
+          filtroPrecoMax === null || jogo.preco <= filtroPrecoMax;
+
+        const categoriaOk =
+          filtroCategoria.length === 0 ||
+          filtroCategoria.includes(jogo.categoria);
+        return precoMinOk && precoMaxOk && categoriaOk;
+      });
+      setListaJogos(jogosFiltrados);
     } catch (err) {
       console.log("Erro ao carregar jogos.", err);
     }
@@ -54,10 +77,29 @@ export const JogosScreen = () => {
     navigation.navigate("DetalhesJogo", { jogo: itemJogo });
   };
 
+  const buscarCategorias = async () => {
+    try {
+      const categorias = await getCategorias();
+      setTodasCategorias(categorias);
+    } catch (err) {
+      console.log("Erro ao buscar categorias.", err);
+    }
+  };
+
+  const alternarCategoria = (categoria: string) => {
+    setFiltroCategoria((prev) =>
+      prev.includes(categoria)
+        ? prev.filter((c) => c !== categoria)
+        : [...prev, categoria]
+    );
+  };
+
   useEffect(() => {
     buscarJogos();
+    buscarCategorias();
     const unsubscribe = navigation.addListener("focus", () => {
       buscarJogos();
+      buscarCategorias();
     });
     return unsubscribe;
   }, [navigation]);
@@ -65,6 +107,41 @@ export const JogosScreen = () => {
   return (
     <NavbarWrapper>
       <View style={styles.container}>
+        <View style={styles.filtros}>
+          <Text style={styles.textFiltros}>Filtros</Text>
+          <ScrollView horizontal style={styles.filtroContainer}>
+            {todasCategorias.map((categoria) => (
+              <View key={categoria} style={styles.checkboxContainer}>
+                <Switch
+                  value={filtroCategoria.includes(categoria)}
+                  onValueChange={() => alternarCategoria(categoria)}
+                />
+                <Text style={styles.checkboxLabel}>{categoria}</Text>
+              </View>
+            ))}
+          </ScrollView>
+          <TextInput
+            style={styles.input}
+            placeholder="Preço mínimo"
+            keyboardType="numeric"
+            value={filtroPrecoMin ? filtroPrecoMin.toString() : ""}
+            onChangeText={(text) =>
+              setFiltroPrecoMin(text ? parseFloat(text) : null)
+            }
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Preço máximo"
+            keyboardType="numeric"
+            value={filtroPrecoMax ? filtroPrecoMax.toString() : ""}
+            onChangeText={(text) =>
+              setFiltroPrecoMax(text ? parseFloat(text) : null)
+            }
+          />
+          <Pressable style={styles.botao} onPress={buscarJogos}>
+            <Text style={styles.textoBotao}>Aplicar Filtros</Text>
+          </Pressable>
+        </View>
         <View>
           <Pressable style={styles.botaoAdd} onPress={adicionarJogo}>
             <Text style={styles.textAdd}>Adicionar novo jogo</Text>
@@ -86,6 +163,9 @@ export const JogosScreen = () => {
                 />
                 <View style={styles.conteudoCard}>
                   <Text style={styles.nomeJogo}>{item.nome}</Text>
+                  <Text style={styles.precoJogo}>
+                    R$ {item.preco.toFixed(2)}
+                  </Text>
                   <View style={styles.botoesContainer}>
                     <Pressable
                       style={styles.botao}
@@ -122,75 +202,3 @@ export const JogosScreen = () => {
     </NavbarWrapper>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: "#ffffff",
-  },
-  botaoAdd: {
-    backgroundColor: "#FF3276",
-    alignSelf: "center",
-    padding: 10,
-    borderRadius: 8,
-    width: "70%",
-    marginBottom: 15,
-  },
-  textAdd: {
-    textAlign: "center",
-    fontSize: 16,
-    color: "#ffffff",
-    fontWeight: "bold",
-  },
-  card: {
-    flexDirection: "row",
-    backgroundColor: "#EECCD7",
-    borderRadius: 24,
-    padding: 16,
-    marginBottom: 25,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 3,
-  },
-  imagem: {
-    width: 190,
-    height: 190,
-    borderRadius: 8,
-    marginRight: 12,
-    paddingTop: 8,
-  },
-  conteudoCard: {
-    flex: 1,
-    justifyContent: "space-between",
-  },
-  nomeJogo: {
-    fontSize: 18,
-    fontWeight: "bold",
-    paddingTop: 8,
-    paddingLeft: 10,
-    color: "#333",
-  },
-  botoesContainer: {
-    paddingLeft: 8,
-    flexDirection: "column",
-    alignItems: "flex-start",
-    gap: 8,
-  },
-  botao: {
-    backgroundColor: "#FF3276",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 10,
-    borderRadius: 8,
-    width: "98%",
-    marginBottom: 4,
-  },
-  textoBotao: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-});
