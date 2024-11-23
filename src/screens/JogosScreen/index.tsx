@@ -11,7 +11,6 @@ import {
   Image,
   ImageBackground,
   Pressable,
-  ScrollView,
   Switch,
   Text,
   View,
@@ -108,135 +107,130 @@ export const JogosScreen = () => {
 
   return (
     <NavbarWrapper>
-      <ImageBackground
-        source={require("../../../assets/controle.png")}
-        imageStyle={styles.imgbg}
-        style={styles.background}
-        resizeMode="cover"
-      >
-        <View style={styles.overlay} />
-
-        <View style={styles.container}>
-          <View style={styles.filtros}>
-            <View style={styles.filtroNovoJogo}>
-              <Pressable
-                style={styles.botaoExpandir}
-                onPress={() => setFiltroExpandido(!filtroExpandido)}
-              >
-                <Text style={styles.textFiltros}>
-                  Filtros {filtroExpandido ? "-" : "+"}
-                </Text>
-              </Pressable>
-              <View>
-                <Text style={styles.jogosText}>Jogos</Text>
-              </View>
-              <Pressable style={styles.botaoAdd} onPress={adicionarJogo}>
-                <Text style={styles.textAdd}>+ Novo jogo</Text>
-              </Pressable>
-            </View>
-
-            {filtroExpandido && (
-              <View>
-                <View style={styles.filtroContainer}>
-                  {todasCategorias.map((categoria) => (
-                    <View key={categoria} style={styles.checkboxContainer}>
-                      <Switch
-                        value={filtroCategoria.includes(categoria)}
-                        onValueChange={() => alternarCategoria(categoria)}
-                      />
-                      <Text style={styles.checkboxLabel}>
-                        {categoria.toUpperCase()}
-                      </Text>
-                    </View>
-                  ))}
-                </View>
-                <View style={styles.precoContainer}>
-                  <View style={styles.precos}>
-                    <Text style={styles.precoText}>Preço mínimo</Text>
-                    <TextInput
-                      style={styles.input}
-                      placeholder="R$"
-                      keyboardType="numeric"
-                      value={filtroPrecoMin ? filtroPrecoMin.toString() : ""}
-                      onChangeText={(text) =>
-                        setFiltroPrecoMin(text ? parseFloat(text) : null)
-                      }
-                    />
-                  </View>
-                  <View style={styles.precos}>
-                    <Text style={styles.precoText}>Preço máximo</Text>
-                    <TextInput
-                      style={styles.input}
-                      placeholder="R$"
-                      keyboardType="numeric"
-                      value={filtroPrecoMax ? filtroPrecoMax.toString() : ""}
-                      onChangeText={(text) =>
-                        setFiltroPrecoMax(text ? parseFloat(text) : null)
-                      }
-                    />
-                  </View>
-                </View>
-                <View style={styles.botoesFiltro}>
-                  <Pressable style={styles.botao} onPress={buscarJogos}>
-                    <Text style={styles.textoBotao}>Aplicar Filtros</Text>
-                  </Pressable>
-                </View>
-              </View>
-            )}
-          </View>
-          {loading ? (
+      <View style={styles.container}>
+        <View style={styles.filtros}>
+          <View style={styles.filtroNovoJogo}>
+            <Pressable
+              style={styles.botaoExpandir}
+              onPress={() => setFiltroExpandido(!filtroExpandido)}
+            >
+              <Text style={styles.textFiltros}>
+                Filtros {filtroExpandido ? "-" : "+"}
+              </Text>
+            </Pressable>
             <View>
-              <ActivityIndicator size="large" />
+              <Text style={styles.jogosText}>Jogos</Text>
             </View>
-          ) : (
-            <FlatList
-              data={listaJogos}
-              renderItem={({ item }) => (
-                <View style={styles.card}>
+            <Pressable style={styles.botaoAdd} onPress={adicionarJogo}>
+              <Text style={styles.textAdd}>+Novo jogo</Text>
+            </Pressable>
+          </View>
+
+          {filtroExpandido && (
+            <View>
+              <View style={styles.filtroContainer}>
+                {todasCategorias.map((categoria) => (
+                  <View key={categoria} style={styles.checkboxContainer}>
+                    <Switch
+                      value={filtroCategoria.includes(categoria)}
+                      onValueChange={() => alternarCategoria(categoria)}
+                    />
+                    <Text style={styles.checkboxLabel}>
+                      {categoria.toUpperCase()}
+                    </Text>
+                  </View>
+                ))}
+              </View>
+              <View style={styles.precoContainer}>
+                <View style={styles.precos}>
+                  <Text style={styles.precoText}>Preço mínimo</Text>
+                  <TextInput
+                    style={styles.input}
+                    placeholder="R$"
+                    keyboardType="numeric"
+                    value={filtroPrecoMin ? filtroPrecoMin.toString() : ""}
+                    onChangeText={(text) =>
+                      setFiltroPrecoMin(text ? parseFloat(text) : null)
+                    }
+                  />
+                </View>
+                <View style={styles.precos}>
+                  <Text style={styles.precoText}>Preço máximo</Text>
+                  <TextInput
+                    style={styles.input}
+                    placeholder="R$"
+                    keyboardType="numeric"
+                    value={filtroPrecoMax ? filtroPrecoMax.toString() : ""}
+                    onChangeText={(text) =>
+                      setFiltroPrecoMax(text ? parseFloat(text) : null)
+                    }
+                  />
+                </View>
+              </View>
+              <View style={styles.botoesFiltro}>
+                <Pressable style={styles.botaoPress} onPress={buscarJogos}>
+                  <Text style={styles.textoBotao}>Aplicar Filtros</Text>
+                </Pressable>
+              </View>
+            </View>
+          )}
+        </View>
+        {loading ? (
+          <View>
+            <ActivityIndicator size="large" />
+          </View>
+        ) : (
+          <FlatList
+            data={listaJogos}
+            renderItem={({ item }) => (
+              <View style={styles.card}>
+                <View style={styles.imgContainer}>
                   <Image
                     source={{ uri: item.imagemurl }}
                     style={styles.imagem}
                     resizeMode="cover"
                   />
-                  <View style={styles.conteudoCard}>
+                  <Text style={styles.precoJogo}>
+                    Preco: R$ {item.preco.toFixed(2)}
+                  </Text>
+                </View>
+                <View style={styles.conteudoCard}>
+                  <View style={styles.cardTitle}>
                     <Text style={styles.nomeJogo}>{item.nome}</Text>
-                    <Text style={styles.precoJogo}>
-                      R$ {item.preco.toFixed(2)}
-                    </Text>
-                    <View style={styles.botoesContainer}>
-                      <Pressable
-                        style={styles.botao}
-                        onPress={() => editarJogo(item)}
-                      >
-                        <Text style={styles.textoBotao}>Alterar</Text>
-                      </Pressable>
-                      <Pressable
-                        style={styles.botao}
-                        onPress={() => {
-                          if (item.id !== undefined) {
-                            deletarJogo(item.id);
-                          } else {
-                            console.log("ID não definido para este item.");
-                          }
-                        }}
-                      >
-                        <Text style={styles.textoBotao}>Deletar</Text>
-                      </Pressable>
-                      <Pressable
-                        style={styles.botao}
-                        onPress={() => verDetalhes(item)}
-                      >
-                        <Text style={styles.textoBotao}>Ver detalhes</Text>
-                      </Pressable>
-                    </View>
+                  </View>
+                  <View style={styles.botoesContainer}>
+                    <Pressable
+                      style={styles.botao}
+                      onPress={() => editarJogo(item)}
+                    >
+                      <Text style={styles.textoBotao}>Alterar</Text>
+                    </Pressable>
+                    <Pressable
+                      style={styles.botao}
+                      onPress={() => {
+                        if (item.id !== undefined) {
+                          deletarJogo(item.id);
+                        } else {
+                          console.log("ID não definido para este item.");
+                        }
+                      }}
+                    >
+                      <Text style={styles.textoBotao}>Deletar</Text>
+                    </Pressable>
+                    <Pressable
+                      style={styles.botao}
+                      onPress={() => verDetalhes(item)}
+                    >
+                      <Text style={styles.textoBotao}>Ver detalhes</Text>
+                    </Pressable>
                   </View>
                 </View>
-              )}
-              keyExtractor={(item, index) => index.toString()}
-            />
-          )}
-        </View>
-      </ImageBackground>
+              </View>
+            )}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        )}
+      </View>
     </NavbarWrapper>
   );
 };
