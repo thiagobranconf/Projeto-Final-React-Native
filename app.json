@@ -18,7 +18,8 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/gifAnimado.gif",
-        "backgroundColor": "#000000"
+        "backgroundColor": "#000000",
+        "resizeMode": "contain"
       }
     },
     "web": {
