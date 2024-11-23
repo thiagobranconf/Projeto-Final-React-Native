@@ -27,7 +27,6 @@ export const styles = StyleSheet.create({
     paddingVertical: 4,
     paddingHorizontal: 12,
   },
-  botaoExpandir: {},
   filtros: {
     marginBottom: 16,
     borderBottomWidth: 1,
@@ -175,6 +174,7 @@ export const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 8,
     width: 120,
+    boxShadow: "2px 2px 2px rgba(0, 0, 0, 0.25)",
   },
   imagem: {
     width: 190,

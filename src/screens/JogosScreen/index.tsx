@@ -110,10 +110,7 @@ export const JogosScreen = () => {
       <View style={styles.container}>
         <View style={styles.filtros}>
           <View style={styles.filtroNovoJogo}>
-            <Pressable
-              style={styles.botaoExpandir}
-              onPress={() => setFiltroExpandido(!filtroExpandido)}
-            >
+            <Pressable onPress={() => setFiltroExpandido(!filtroExpandido)}>
               <Text style={styles.textFiltros}>
                 Filtros {filtroExpandido ? "-" : "+"}
               </Text>

@@ -4,7 +4,6 @@ import {
   ActivityIndicator,
   FlatList,
   Pressable,
-  StyleSheet,
   Text,
   View,
 } from "react-native";
@@ -61,9 +60,12 @@ export const UserScreen = () => {
   return (
     <NavbarWrapper>
       <View style={styles.container}>
-        <View>
-          <Pressable style={styles.botao} onPress={adicionarUser}>
-            <Text>Adicionar novo usuário</Text>
+        <View style={styles.headContainer}>
+          <View>
+            <Text style={styles.usersText}>Usuários</Text>
+          </View>
+          <Pressable style={styles.botaoPress} onPress={adicionarUser}>
+            <Text style={styles.textAdd}>+Novo Usuário</Text>
           </Pressable>
         </View>
         {loading ? (
@@ -74,9 +76,11 @@ export const UserScreen = () => {
           <FlatList
             data={listaUsers}
             renderItem={({ item, index }) => (
-              <View>
-                <Text>{item.nome}</Text>
-                <View>
+              <View style={styles.cardContainer}>
+                <View style={styles.nomeContainer}>
+                  <Text style={styles.userNome}>{item.nome}</Text>
+                </View>
+                <View style={styles.botoesContainer}>
                   <Pressable
                     style={styles.botao}
                     onPress={() => editarUser(item)}
@@ -99,6 +103,7 @@ export const UserScreen = () => {
               </View>
             )}
             keyExtractor={(item, index) => index.toString()}
+            numColumns={2}
           />
         )}
       </View>
