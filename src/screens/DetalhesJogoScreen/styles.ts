@@ -3,14 +3,11 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
-    backgroundColor: "#ffffff",
+    backgroundColor: "#EECCD7",
   },
   containerDetalhes: {
-    backgroundColor: "#000000",
-    padding: 16,
-    borderRadius: 8,
-    marginBottom: 16,
+    backgroundColor: "#FF3276",
+    paddingVertical: 12,
   },
   detalhes: {
     fontSize: 24,
@@ -18,27 +15,36 @@ export const styles = StyleSheet.create({
     color: "#ffffff",
     textAlign: "center",
   },
+  content: {
+    padding: 12,
+    backgroundColor: "#f5f5f5",
+    borderRadius: 20,
+    margin: 12,
+    borderWidth: 1,
+    borderColor: "#ff3276",
+  },
   imagem: {
     width: "100%",
     height: 300,
     marginBottom: 16,
+    borderRadius: 20,
   },
   nome: {
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 8,
     textAlign: "left",
+    color: "#ff3276",
   },
   descricao: {
-    color: "#000000",
     fontSize: 20,
-    marginTop: 16,
     textAlign: "left",
     fontWeight: "500",
+    color: "#ff3276",
   },
   descricaoJogo: {
     fontSize: 16,
-    textAlign: "center",
+    textAlign: "left",
   },
   precoContainer: {
     flexDirection: "row",
@@ -47,6 +53,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   preco: {
+    color: "#ff3276",
     fontSize: 24,
     fontWeight: "600",
   },

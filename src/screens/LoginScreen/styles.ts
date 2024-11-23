@@ -7,14 +7,21 @@ export const styles = StyleSheet.create({
   },
 
   container: {
-    paddingTop: 20,
+    // paddingTop: 104,
     flex: 1,
-    alignItems: "center",
+    // alignItems: "center",
     justifyContent: "center",
+    // height: "100%",
+  },
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: "center",
+    alignItems: "stretch",
+    paddingHorizontal: 12,
   },
   logoContainer: {
-    justifyContent: "center",
-    alignItems: "center",
+    flex: 1,
+    justifyContent: "flex-end",
   },
   logo: {
     width: 200,
@@ -25,8 +32,13 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     gap: 5,
     marginTop: 15,
-    paddingHorizontal: 10,
+    paddingHorizontal: 16,
   },
+  contentContainer: {
+    flex: 1,
+    justifyContent: "center",
+  },
+
   input: {
     paddingLeft: 30,
     paddingVertical: 20,
@@ -36,6 +48,7 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
     width: "100%",
   },
+
   forgotPasswordContainer: {
     marginTop: 4,
   },
@@ -43,7 +56,7 @@ export const styles = StyleSheet.create({
     color: "#FF3276",
     fontWeight: "500",
     textAlign: "right",
-    marginRight: 10,
+    marginRight: 20,
     fontSize: 18,
   },
   buttonContainer: {
@@ -53,9 +66,9 @@ export const styles = StyleSheet.create({
   loginButton: {
     backgroundColor: "#FF3276",
     borderRadius: 35,
-    padding: 15,
+    paddingHorizontal: 50,
+    paddingVertical: 15,
     marginTop: 30,
-    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     width: "60%",
@@ -83,9 +96,14 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
     marginLeft: 5,
   },
+  // imgbgContainer: {
+  //   position: "relative",
+  //   height: "100%",
+  // },
   imgbgContainer: {
-    position: "relative",
-    height: "100%",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
   imgbg: {
     position: "absolute",

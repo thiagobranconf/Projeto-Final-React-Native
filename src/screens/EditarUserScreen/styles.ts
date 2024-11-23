@@ -3,17 +3,26 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
-    backgroundColor: "#ffffff",
+    backgroundColor: "#EECCD7",
   },
   containerInput: {
-    marginTop: "5%",
+    backgroundColor: "#fff",
+    marginHorizontal: 12,
+    padding: 12,
+    gap: 5,
+    marginTop: 30,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: "#ff3276",
   },
   containerAlterar: {
-    backgroundColor: "#000000",
-    padding: 16,
-    borderRadius: 8,
-    marginTop: 16,
+    backgroundColor: "#FF3276",
+    paddingVertical: 12,
+  },
+  id: {
+    fontSize: 16,
+    fontWeight: "500",
+    color: "#ff3276",
   },
   add: {
     fontSize: 24,

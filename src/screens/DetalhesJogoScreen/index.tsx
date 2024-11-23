@@ -15,15 +15,20 @@ export const DetalhesJogoScreen = () => {
         <View style={styles.containerDetalhes}>
           <Text style={styles.detalhes}>Detalhes do Jogo</Text>
         </View>
-        <Text style={styles.nome}>{nome}</Text>
-        <Image source={{ uri: imagemurl }} style={styles.imagem} />
-        <View>
-          <Text style={styles.descricao}>Descrição</Text>
-          <Text style={styles.descricaoJogo}>{descricao}</Text>
-        </View>
-        <View style={styles.precoContainer}>
-          <Text style={styles.preco}>Preço R$</Text>
-          <Text style={styles.precoJogo}>{preco}</Text>
+        <View style={styles.content}>
+          <Text style={styles.nome}>{nome}</Text>
+          <Image
+            source={{ uri: imagemurl }}
+            style={styles.imagem}
+            resizeMode="stretch"
+          />
+          <View>
+            <Text style={styles.descricao}>Descrição</Text>
+            <Text style={styles.descricaoJogo}>{descricao}</Text>
+          </View>
+          <View style={styles.precoContainer}>
+            <Text style={styles.preco}>Preço R$ {preco}</Text>
+          </View>
         </View>
       </View>
     </NavbarWrapper>

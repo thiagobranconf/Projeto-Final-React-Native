@@ -1,8 +1,4 @@
-import { JogosScreen } from "../screens/JogosScreen";
-import { AdicionarUserScreen } from "../screens/AdicionarUserScreen";
-import { EditarUserScreen } from "../screens/EditarUserScreen";
 import { HomeScreen } from "../screens/HomeScreen";
-import { UserScreen } from "../screens/UsersScreen";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import DrawerContent from "../components/DrawerContent/DrawerContent";
 import JogosNavigator from "./JogosNavigator";

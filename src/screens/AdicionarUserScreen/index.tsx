@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { Pressable, Text, TextInput, View } from "react-native";
 import { createUser } from "../../services/userService";
 import { NavbarWrapper } from "../../components/NavbarWrapper/NavbarWrapper";
 import { styles } from "./styles";

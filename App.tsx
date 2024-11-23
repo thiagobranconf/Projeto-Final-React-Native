@@ -1,11 +1,8 @@
 import "react-native-gesture-handler";
 import { useEffect } from "react";
-import StackNavigator from "./src/navigation/StackNavigator";
 import { NavigationContainer } from "@react-navigation/native";
-import { AuthProvider, useAuth } from "./src/contexts/AuthContext";
-import { ActivityIndicator, View } from "react-native";
+import { AuthProvider } from "./src/contexts/AuthContext";
 import * as SplashScreen from "expo-splash-screen";
-import DrawerNavigator from "./src/navigation/DrawerNavigator";
 import { Rotas } from "./src/navigation";
 import ConnectionStatus from "./src/components/ConnectionStatus";
 

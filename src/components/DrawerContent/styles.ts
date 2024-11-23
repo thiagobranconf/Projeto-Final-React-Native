@@ -20,11 +20,12 @@ export const styles = StyleSheet.create({
     color: "#FF3276",
   },
   menuItem: {
-    backgroundColor: "#F3ADC4",
-    paddingVertical: 15,
+    backgroundColor: "#f5f5f5",
+    paddingVertical: 20,
     paddingHorizontal: 20,
     borderBottomWidth: 1,
-    borderBottomColor: "#EDEDED",
+    borderColor: "#ff3276",
+    borderWidth: 1,
   },
   menuText: {
     fontSize: 16,
@@ -43,5 +44,10 @@ export const styles = StyleSheet.create({
   footerText: {
     fontSize: 16,
     color: "#FF0000",
+  },
+  activeMenuItem: {
+    backgroundColor: "#F3ADC4",
+    color: "#fff",
+    fontWeight: "800",
   },
 });

@@ -8,6 +8,9 @@ import {
   Pressable,
   ImageBackground,
   ActivityIndicator,
+  Platform,
+  ScrollView,
+  Alert,
 } from "react-native";
 import { useState } from "react";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
@@ -28,26 +31,41 @@ export const LoginScreen = () => {
       await login(email, senha);
     } catch (err) {
       setError("Erro ao fazer login");
+
+      Alert.alert(
+        "Erro de login",
+        "Email ou senha incorretos. Tente novamente.",
+        [{ text: "OK" }]
+      );
     }
   };
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <View style={styles.container}>
-        <ImageBackground
-          imageStyle={styles.imgbg}
-          style={styles.imgbgContainer}
-          source={require("../../../assets/controle.png")}
-          resizeMode="contain"
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+      >
+        <ScrollView
+          contentContainerStyle={styles.scrollContainer}
+          keyboardShouldPersistTaps="handled"
         >
-          <View style={styles.logoContainer}>
-            <Image
-              style={styles.logo}
-              source={require("../../../assets/logo.png")}
-            />
-          </View>
-          <KeyboardAvoidingView>
-            <View>
+          <ImageBackground
+            imageStyle={styles.imgbg}
+            style={styles.imgbgContainer}
+            source={require("../../../assets/controle.png")}
+            resizeMode="contain"
+          >
+            <View style={styles.logoContainer}>
+              <Image
+                style={styles.logo}
+                source={require("../../../assets/logo.png")}
+              />
+            </View>
+            {/* <KeyboardAvoidingView
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+          > */}
+            <View style={styles.contentContainer}>
               <View style={styles.inputContainer}>
                 <TextInput
                   value={email}
@@ -55,6 +73,7 @@ export const LoginScreen = () => {
                   style={styles.input}
                   placeholder="EMAIL"
                   placeholderTextColor="gray"
+                  autoCapitalize="none"
                 />
               </View>
               <View style={styles.inputContainer}>
@@ -86,13 +105,14 @@ export const LoginScreen = () => {
               >
                 <Text style={styles.registerText}>
                   Não tem uma conta?
-                  <Text style={styles.highlight}>CADASTRE-SE</Text>
+                  <Text style={styles.highlight}> CADASTRE-SE</Text>
                 </Text>
               </Pressable>
             </View>
-          </KeyboardAvoidingView>
-        </ImageBackground>
-      </View>
+            {/* </KeyboardAvoidingView> */}
+          </ImageBackground>
+        </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };

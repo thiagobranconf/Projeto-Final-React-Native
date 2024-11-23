@@ -49,7 +49,7 @@ export const styles = StyleSheet.create({
   },
 
   textoBotao: {
-    color: "#fff",
+    color: "#FF3276",
     fontSize: 16,
     fontWeight: "bold",
   },
@@ -73,7 +73,7 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   botao: {
-    backgroundColor: "#FF3276",
+    backgroundColor: "#EECCD7",
     justifyContent: "center",
     alignItems: "center",
     padding: 10,

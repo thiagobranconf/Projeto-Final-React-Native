@@ -4,7 +4,7 @@
     "slug": "projeto-final-react",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/gifAnimado.gif",
+    "icon": "./assets/logo.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
@@ -17,7 +17,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/gifAnimado.gif",
+        "foregroundImage": "./assets/logo.png",
         "backgroundColor": "#000000",
         "resizeMode": "contain"
       }

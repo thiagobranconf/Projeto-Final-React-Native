@@ -11,22 +11,19 @@ export type DrawerParamList = {
   Home: undefined;
   Jogos: undefined;
   Users: undefined;
-  // EditarJogo: { jogo: jogo };
-  // AdicionarJogo: undefined;
   AdicionarUser: undefined;
   EditarUser: { user: user };
   NossaEquipe: undefined;
-  // DetalhesJogo: { jogo: jogo };
 };
 
 export type JogosNavigatorParamList = {
-  Jogos: undefined;
+  JogosPrincipal: undefined;
   AdicionarJogo: undefined;
   EditarJogo: { jogo: jogo };
   DetalhesJogo: { jogo: jogo };
 };
 export type UsersNavigatorParamList = {
-  Users: undefined;
+  UsersPrincipal: undefined;
   AdicionarUser: undefined;
   EditarUser: { user: user };
 };
@@ -57,10 +54,10 @@ export type EditarUserRouteProp = RouteProp<
 
 export type JogosScreenNavigationProp = StackNavigationProp<
   JogosNavigatorParamList,
-  "Jogos"
+  "JogosPrincipal"
 >;
 
 export type UsersScreenNavigationProp = StackNavigationProp<
   UsersNavigatorParamList,
-  "Users"
+  "UsersPrincipal"
 >;

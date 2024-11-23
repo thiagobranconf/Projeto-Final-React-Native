@@ -87,38 +87,57 @@ export const EditarJogoScreen = () => {
           <Text style={styles.alterar}>Alterar Jogo</Text>
         </View>
         <View style={styles.containerInput}>
-          <Text>ID: {jogoAtual.id}</Text>
-          <TextInput
-            style={styles.input}
-            value={nome}
-            onChangeText={setNome}
-            placeholder="Nome"
-          />
-          <TextInput
-            style={styles.input}
-            value={descricao}
-            onChangeText={setDescricao}
-            placeholder="Descrição"
-          />
-          <TextInput
-            style={styles.input}
-            value={preco}
-            onChangeText={setPreco}
-            placeholder="Preço"
-            keyboardType="numeric"
-          />
-          <TextInput
-            style={styles.input}
-            value={categoria}
-            onChangeText={setCategoria}
-            placeholder="Categoria"
-          />
-          <TextInput
-            style={styles.input}
-            value={imagemurl}
-            onChangeText={setImagemUrl}
-            placeholder="URL da Imagem"
-          />
+          <Text style={styles.id}>ID: {jogoAtual.id}</Text>
+          <View>
+            <Text style={styles.id}>Nome:</Text>
+            <TextInput
+              style={styles.input}
+              value={nome}
+              onChangeText={setNome}
+              placeholder="Nome"
+            />
+          </View>
+          <View>
+            <Text style={styles.id}>Descrição:</Text>
+            <TextInput
+              style={styles.input}
+              value={descricao}
+              onChangeText={setDescricao}
+              placeholder="Descrição"
+              multiline={true}
+              numberOfLines={6}
+            />
+          </View>
+          <View>
+            <Text style={styles.id}>Preço:</Text>
+            <TextInput
+              style={styles.input}
+              value={preco}
+              onChangeText={setPreco}
+              placeholder="Preço"
+              keyboardType="numeric"
+            />
+          </View>
+          <View>
+            <Text style={styles.id}>Categoria:</Text>
+            <TextInput
+              style={styles.input}
+              value={categoria}
+              onChangeText={setCategoria}
+              placeholder="Categoria"
+            />
+          </View>
+          <View>
+            <Text style={styles.id}>Imagem:</Text>
+            <TextInput
+              style={styles.input}
+              value={imagemurl}
+              onChangeText={setImagemUrl}
+              placeholder="URL da Imagem"
+              multiline={true}
+              numberOfLines={3}
+            />
+          </View>
           <View style={styles.botaoContainer}>
             {loading ? (
               <View style={styles.loadingContainer}>

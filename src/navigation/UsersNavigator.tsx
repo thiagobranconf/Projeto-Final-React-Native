@@ -7,7 +7,7 @@ const Stack = createNativeStackNavigator();
 const UsersNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Users" component={UserScreen} />
+      <Stack.Screen name="UsersPrincipal" component={UserScreen} />
       <Stack.Screen name="EditarUser" component={EditarUserScreen} />
       <Stack.Screen name="AdicionarUser" component={AdicionarUserScreen} />
     </Stack.Navigator>

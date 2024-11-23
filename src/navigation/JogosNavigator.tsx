@@ -9,7 +9,7 @@ const Stack = createNativeStackNavigator();
 const JogosNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Jogos" component={JogosScreen} />
+      <Stack.Screen name="JogosPrincipal" component={JogosScreen} />
       <Stack.Screen name="EditarJogo" component={EditarJogoScreen} />
       <Stack.Screen name="AdicionarJogo" component={AdicionarJogoScreen} />
       <Stack.Screen name="DetalhesJogo" component={DetalhesJogoScreen} />
