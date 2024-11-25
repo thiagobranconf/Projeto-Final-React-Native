@@ -44,7 +44,7 @@ const Administradores = [
   {
     id: 7,
     nome: "Vitor Ferreira",
-    imagem: require("../../../assets/logo.png"),
+    imagem: require("../../../assets/VITOR FERREIRA.jpeg"),
     descricao: "Fisiculturista",
   },
 ];
