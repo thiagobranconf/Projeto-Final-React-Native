@@ -8,7 +8,10 @@ import { JogosScreen } from "../screens/JogosScreen";
 const Stack = createNativeStackNavigator();
 const JogosNavigator = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator
+      initialRouteName="JogosPrincipal"
+      screenOptions={{ headerShown: false }}
+    >
       <Stack.Screen name="JogosPrincipal" component={JogosScreen} />
       <Stack.Screen name="EditarJogo" component={EditarJogoScreen} />
       <Stack.Screen name="AdicionarJogo" component={AdicionarJogoScreen} />

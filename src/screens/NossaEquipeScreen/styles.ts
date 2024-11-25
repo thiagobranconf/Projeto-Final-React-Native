@@ -34,6 +34,8 @@ export const styles = StyleSheet.create({
     height: 100,
     borderRadius: 50,
     marginBottom: 10,
+    borderWidth: 1,
+    borderColor: "#ff3276",
   },
   name: {
     fontSize: 18,

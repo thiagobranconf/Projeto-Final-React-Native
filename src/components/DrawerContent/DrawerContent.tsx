@@ -11,7 +11,19 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
     navigation.getState().routes[navigation.getState().index].name;
 
   const navigateToScreen = (screen: string) => {
-    navigation.navigate(screen);
+    if (screen === "Jogos") {
+      navigation.reset({
+        index: 0,
+        routes: [{ name: "Jogos" }],
+      });
+    } else if (screen === "Users") {
+      navigation.reset({
+        index: 0,
+        routes: [{ name: "Users" }],
+      });
+    } else {
+      navigation.navigate(screen);
+    }
   };
 
   const isActive = (screen: string) => {

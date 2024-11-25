@@ -145,11 +145,11 @@ export const EditarJogoScreen = () => {
               </View>
             ) : (
               <>
-                <Pressable style={styles.botao} onPress={salvar}>
-                  <Text style={styles.textoBotao}>Salvar</Text>
-                </Pressable>
                 <Pressable style={styles.botao} onPress={cancelar}>
                   <Text style={styles.textoBotao}>Cancelar</Text>
+                </Pressable>
+                <Pressable style={styles.botao} onPress={salvar}>
+                  <Text style={styles.textoBotao}>Salvar</Text>
                 </Pressable>
               </>
             )}
