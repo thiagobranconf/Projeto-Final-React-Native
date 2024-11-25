@@ -5,41 +5,59 @@ import { StackNavigationProp } from "@react-navigation/stack";
 export type RootStackParamList = {
   Login: undefined;
   Registro: undefined;
-  Jogos: RouteProp<DrawerParamList, "Jogos">;
 };
 
 export type DrawerParamList = {
   Home: undefined;
   Jogos: undefined;
   Users: undefined;
-  EditarJogo: { jogo: jogo };
-  AdicionarJogo: undefined;
   AdicionarUser: undefined;
   EditarUser: { user: user };
-  DetalhesJogo: { jogo: jogo };
+  NossaEquipe: undefined;
 };
 
-export type DetalhesJogoRouteProp = RouteProp<DrawerParamList, "DetalhesJogo">;
+export type JogosNavigatorParamList = {
+  JogosPrincipal: undefined;
+  AdicionarJogo: undefined;
+  EditarJogo: { jogo: jogo };
+  DetalhesJogo: { jogo: jogo };
+};
+export type UsersNavigatorParamList = {
+  UsersPrincipal: undefined;
+  AdicionarUser: undefined;
+  EditarUser: { user: user };
+};
 
-export type EditarJogoRouteProp = RouteProp<DrawerParamList, "EditarJogo">;
+export type DetalhesJogoRouteProp = RouteProp<
+  JogosNavigatorParamList,
+  "DetalhesJogo"
+>;
 
-export type EditarUserRouteProp = RouteProp<DrawerParamList, "EditarUser">;
+export type EditarJogoRouteProp = RouteProp<
+  JogosNavigatorParamList,
+  "EditarJogo"
+>;
 
 export type AdicionarJogoRouteProp = RouteProp<
-  DrawerParamList,
+  JogosNavigatorParamList,
   "AdicionarJogo"
 >;
 
 export type AdicionarUserRouteProp = RouteProp<
-  DrawerParamList,
+  UsersNavigatorParamList,
   "AdicionarUser"
+>;
+export type EditarUserRouteProp = RouteProp<
+  UsersNavigatorParamList,
+  "EditarUser"
 >;
 
 export type JogosScreenNavigationProp = StackNavigationProp<
-  DrawerParamList,
-  "Jogos"
+  JogosNavigatorParamList,
+  "JogosPrincipal"
 >;
+
 export type UsersScreenNavigationProp = StackNavigationProp<
-  DrawerParamList,
-  "Users"
+  UsersNavigatorParamList,
+  "UsersPrincipal"
 >;

@@ -4,16 +4,16 @@ import {
   ActivityIndicator,
   FlatList,
   Pressable,
-  StyleSheet,
   Text,
   View,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { UsersScreenNavigationProp } from "../../types/screensType";
 import { deleteUser, getUsers } from "../../services/userService";
+import { NavbarWrapper } from "../../components/NavbarWrapper/NavbarWrapper";
+import { styles } from "./styles";
 
 export const UserScreen = () => {
-  const [user, setUser] = useState("");
   const [loading, setLoading] = useState(true);
   const [listaUsers, setListaUsers] = useState<user[]>([]);
   const navigation = useNavigation<UsersScreenNavigationProp>();
@@ -58,71 +58,55 @@ export const UserScreen = () => {
   }, [navigation]);
 
   return (
-    <View style={styles.container}>
-      <View>
-        <Pressable style={styles.botao} onPress={adicionarUser}>
-          <Text>Adicionar novo usuário</Text>
-        </Pressable>
-      </View>
-      {loading ? (
-        <View>
-          <ActivityIndicator size="large" />
+    <NavbarWrapper>
+      <View style={styles.container}>
+        <View style={styles.headContainer}>
+          <View>
+            <Text style={styles.usersText}>Usuários</Text>
+          </View>
+          <Pressable style={styles.botaoPress} onPress={adicionarUser}>
+            <Text style={styles.textAdd}>+Novo Usuário</Text>
+          </Pressable>
         </View>
-      ) : (
-        <FlatList
-          data={listaUsers}
-          renderItem={({ item, index }) => (
-            <View>
-              <Text>{item.nome}</Text>
-              <View>
-                <Pressable
-                  style={styles.botao}
-                  onPress={() => editarUser(item)}
-                >
-                  <Text style={styles.textoBotao}>Alterar</Text>
-                </Pressable>
-                <Pressable
-                  style={styles.botao}
-                  onPress={() => {
-                    if (item.id !== undefined) {
-                      deletarUser(item.id);
-                    } else {
-                      console.log("ID não definido para este item.");
-                    }
-                  }}
-                >
-                  <Text style={styles.textoBotao}>Deletar</Text>
-                </Pressable>
+        {loading ? (
+          <View>
+            <ActivityIndicator size="large" />
+          </View>
+        ) : (
+          <FlatList
+            data={listaUsers}
+            renderItem={({ item, index }) => (
+              <View style={styles.cardContainer}>
+                <View style={styles.nomeContainer}>
+                  <Text style={styles.userNome}>{item.nome}</Text>
+                </View>
+                <View style={styles.botoesContainer}>
+                  <Pressable
+                    style={styles.botao}
+                    onPress={() => editarUser(item)}
+                  >
+                    <Text style={styles.textoBotao}>Alterar</Text>
+                  </Pressable>
+                  <Pressable
+                    style={styles.botao}
+                    onPress={() => {
+                      if (item.id !== undefined) {
+                        deletarUser(item.id);
+                      } else {
+                        console.log("ID não definido para este item.");
+                      }
+                    }}
+                  >
+                    <Text style={styles.textoBotao}>Deletar</Text>
+                  </Pressable>
+                </View>
               </View>
-            </View>
-          )}
-          keyExtractor={(item, index) => index.toString()}
-        />
-      )}
-    </View>
+            )}
+            keyExtractor={(item, index) => index.toString()}
+            numColumns={2}
+          />
+        )}
+      </View>
+    </NavbarWrapper>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 30,
-    flex: 1,
-    padding: 16,
-  },
-  imagem: {
-    width: 150,
-    height: 150,
-  },
-  botao: {
-    backgroundColor: "#FF3276",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 10,
-    borderRadius: 8,
-    width: "50%",
-    marginVertical: 10,
-  },
-  textoBotao: {
-    color: "#fff",
-  },
-});

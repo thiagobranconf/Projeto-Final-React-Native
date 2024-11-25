@@ -3,6 +3,9 @@ import { EditarUserRouteProp } from "../../types/screensType";
 import { useState } from "react";
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { updateUser } from "../../services/userService";
+import { NavbarWrapper } from "../../components/NavbarWrapper/NavbarWrapper";
+import { styles } from "./styles";
+import symbolicateStackTrace from "react-native/Libraries/Core/Devtools/symbolicateStackTrace";
 
 export const EditarUserScreen = () => {
   const route = useRoute<EditarUserRouteProp>();
@@ -34,64 +37,50 @@ export const EditarUserScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text>ID: {userAtual.id}</Text>
-      <TextInput
-        style={styles.input}
-        value={nome}
-        onChangeText={setNome}
-        placeholder="Nome"
-      />
-      <TextInput
-        style={styles.input}
-        value={email}
-        onChangeText={setEmail}
-        placeholder="Email"
-      />
-      <TextInput
-        style={styles.input}
-        value={senha}
-        onChangeText={setSenha}
-        placeholder="Senha"
-      />
-      <View style={styles.botaoContainer}>
-        <Pressable style={styles.botao} onPress={salvar}>
-          <Text style={styles.textoBotao}>Salvar</Text>
-        </Pressable>
-        <Pressable style={styles.botao} onPress={cancelar}>
-          <Text style={styles.textoBotao}>Cancelar</Text>
-        </Pressable>
+    <NavbarWrapper>
+      <View style={styles.container}>
+        <View style={styles.containerAlterar}>
+          <Text style={styles.add}>Editar usuário</Text>
+        </View>
+        <View style={styles.containerInput}>
+          <Text style={styles.id}>ID: {userAtual.id}</Text>
+          <View>
+            <Text style={styles.id}>Nome:</Text>
+            <TextInput
+              style={styles.input}
+              value={nome}
+              onChangeText={setNome}
+              placeholder="Nome"
+            />
+          </View>
+          <View>
+            <Text style={styles.id}>Email:</Text>
+            <TextInput
+              style={styles.input}
+              value={email}
+              onChangeText={setEmail}
+              placeholder="Email"
+            />
+          </View>
+          <View>
+            <Text style={styles.id}>Senha:</Text>
+            <TextInput
+              style={styles.input}
+              value={senha}
+              onChangeText={setSenha}
+              placeholder="Senha"
+            />
+          </View>
+          <View style={styles.botaoContainer}>
+            <Pressable style={styles.botao} onPress={cancelar}>
+              <Text style={styles.textoBotao}>Cancelar</Text>
+            </Pressable>
+            <Pressable style={styles.botao} onPress={salvar}>
+              <Text style={styles.textoBotao}>Salvar</Text>
+            </Pressable>
+          </View>
+        </View>
       </View>
-    </View>
+    </NavbarWrapper>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 8,
-    padding: 10,
-    marginBottom: 10,
-  },
-  botaoContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  botao: {
-    backgroundColor: "#FF3276",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 10,
-    borderRadius: 8,
-    width: "45%",
-  },
-  textoBotao: {
-    color: "#fff",
-    fontSize: 16,
-  },
-});

@@ -1,7 +1,5 @@
-import { JogosScreen } from "../screens/JogosScreen";
 import { LoginScreen } from "../screens/LoginScreen";
 import { RegistroScreen } from "../screens/RegistroScreen";
-import { RootStackParamList } from "../types/screensType";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
