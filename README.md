@@ -46,9 +46,10 @@ Este é um aplicativo de gerenciamento de um e-commerce de jogos desenvolvido co
    - npm install
    - npx expo start
 
-**✨ Contribuintes**
-Integrante 1: [GitHub](https://github.com/nandacpc)
-Integrante 2: [GitHub](https://github.com/thiagobranconf)
-Integrante 3: [GitHub](https://github.com/GabrielSiqueira98)
-Integrante 4: [GitHub](https://github.com/Eduarda-goular)
+**✨ Contribuintes:**
+- Fernanda: [GitHub](https://github.com/nandacpc)
+- Thiago: [GitHub](https://github.com/thiagobranconf)
+- Gabriel: [GitHub](https://github.com/GabrielSiqueira98)
+- Eduarda: [GitHub](https://github.com/Eduarda-goular)
+- Tiago: [GitHub](https://github.com/Tronin1000)
 
